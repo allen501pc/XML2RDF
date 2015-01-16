@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RTML version="3.2" mode="resource" uid="rtml://www.opentel.net/STELLA-I"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.rtml.org/v3.2" xsi:schemaLocation="RTML-v3.2.xsd">
+  <!-- This is only a fragment -->
+  <Telescope>
+    <FocalLength units="meters">9.6</FocalLength>
+    <Camera>
+      <FilterWheel>
+        <Filter type="Johnson_U" name="U"/>
+        <Filter type="Johnson_B" name="B"/>
+      </FilterWheel>
+    </Camera>
+  </Telescope>
+</RTML>
