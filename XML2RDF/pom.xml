@@ -4,11 +4,11 @@
 
   <groupId>XML2RDF</groupId>
   <artifactId>XML2RDF</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2</version>
   <packaging>jar</packaging>
 
   <name>XML2RDF</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/allen501pc/XML2RDF</url>
   
   <build>
   	<plugins>
@@ -19,8 +19,8 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>xml2rdf.example.BasicExample</mainClass>
-                            <packageName>xml2rdf.example</packageName>
+                            <mainClass>xml2rdf.command.Command</mainClass>
+                            <packageName>xml2rdf.command</packageName>
                             <addClasspath>true</addClasspath>
                         </manifest>
                         <manifestEntries>
@@ -44,8 +44,8 @@
 	        <configuration>
 		         <archive>
 	                 <manifest>
-	                 	<mainClass>xml2rdf.example.BasicExample</mainClass>
-	                        <packageName>xml2rdf.example</packageName>
+	                 	<mainClass>xml2rdf.command.Command</mainClass>
+	                        <packageName>xml2rdf.command</packageName>
 	                    	<addClasspath>true</addClasspath>
 	                    </manifest>
 	                    <manifestEntries>
