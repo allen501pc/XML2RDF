@@ -13,7 +13,8 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 public class Settings {
 	protected static PropertiesConfiguration conf = new PropertiesConfiguration();
 	protected static ArrayList<String> configFiles = new ArrayList<String>();
-	private static boolean isLoaded = false; 	
+	private static boolean isLoaded = false;
+	private static boolean isWordNetUsed = false;
 	
 	/**
 	 * Set the configuration files. 
@@ -87,5 +88,38 @@ public class Settings {
 			Load();
 		}
 		return conf.getString("transformation.file");
+	}
+	
+	public static void SetWordNetUsed(boolean used) {
+		isWordNetUsed = used;
+	}
+	
+	public static boolean IsWordNetUsed() {
+		if( !isLoaded ) {
+			Load();
+		}
+		return conf.getBoolean("wordnet.use");
+	}
+	
+	/**
+	 * Get WordNet database's directory path
+	 * @return path.
+	 */
+	public static String GetWordNetDBPath() {
+		if( !isLoaded ) {
+			Load();
+		}
+		return conf.getString("wordnet.dir_path");
+	}
+	
+	/**
+	 * Get WordNet IC file path.
+	 * @return path
+	 */
+	public static String GetWordNetICFilePath() {
+		if( !isLoaded ) {
+			Load();
+		}
+		return conf.getString("wordnet.ic_path");
 	}
 }
