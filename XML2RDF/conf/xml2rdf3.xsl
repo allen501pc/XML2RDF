@@ -110,7 +110,7 @@
        <!-- Enclose text in an rdf:value element -->
        <xsl:template match="text()">
               <xsl:element name="rdf:value">
-                     <xsl:value-of select="."/>
+                     <xsl:value-of select="." disable-output-escaping="no" />
               </xsl:element>
        </xsl:template>
 

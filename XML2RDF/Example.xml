@@ -1,0 +1,1421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response xmlns="http://www.openaire.org/">
+	  <header>
+		    <query>((deletedbyinference = false) AND (oaftype exact result)) and (resulttypeid exact publication)</query>
+				  <locale>en_GB</locale>	
+					<size>10</size>
+			   <page>1</page>
+			   <total>9189509</total>
+					</header>
+	  <results>
+									<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:dri="http://www.driver-repository.eu/namespace/dri"
+              xmlns:oaf="http://namespace.openaire.eu/oaf">
+         <header>
+            <dri:objIdentifier>dedup_wf_001::619598e4c37f850d14d62ce4bf22b9b6</dri:objIdentifier>
+            <dri:dateOfCollection>2013-07-31T20:22:14Z</dri:dateOfCollection>
+            <counters>
+	              <counter_authorship value="4"/>
+               <counter_dedup value="2"/>
+	           </counters>
+         </header>
+         <metadata>
+            <oaf:entity xsi:schemaLocation="http://namespace.openaire.eu/oaf https://www.openaire.eu/schema/0.2/oaf-0.2.xsd">
+		             <oaf:result>
+			               <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:R</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:Medicine</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">DOAJ:Health Sciences</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:RC254-282</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:Internal medicine</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:Neoplasms. Tumors. Oncology. Including cancer and carcinogens</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:RC31-1245</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">DOAJ:Medicine (General)</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">DOAJ:Oncology</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Research</subject>
+                  <title schemename="dnet:dataCite_title" classname="main title"
+                         schemeid="dnet:dataCite_title"
+                         classid="main title">The rapamycin-regulated gene expression signature determines prognosis for breast cancer</title>
+                  <dateofacceptance>2009-01-01</dateofacceptance>
+                  <publisher>BioMed Central</publisher>
+                  <resulttype schemename="dnet:result_typologies" classname="publication"
+                              schemeid="dnet:result_typologies"
+                              classid="publication"/>
+                  <language schemename="dnet:languages" classname="English" schemeid="dnet:languages"
+                            classid="eng"/>
+                  <journal eissn="" issn="1476-4598" lissn="">Molecular Cancer</journal>
+                  <description>&lt;p&gt;Abstract&lt;/p&gt; &lt;p&gt;Background&lt;/p&gt; &lt;p&gt;Mammalian target of rapamycin (mTOR) is a serine/threonine kinase involved in multiple intracellular signaling pathways promoting tumor growth. mTOR is aberrantly activated in a significant portion of breast cancers and is a promising target for treatment. Rapamycin and its analogues are in clinical trials for breast cancer treatment. Patterns of gene expression (metagenes) may also be used to simulate a biologic process or effects of a drug treatment. In this study, we tested the hypothesis that the gene-expression signature regulated by rapamycin could predict disease outcome for patients with breast cancer.&lt;/p&gt; &lt;p&gt;Results&lt;/p&gt; &lt;p&gt;Colony formation and sulforhodamine B (IC&lt;sub&gt;50 &lt;/sub&gt;&lt; 1 nM) assays, and xenograft animals showed that MDA-MB-468 cells were sensitive to treatment with rapamycin. The comparison of &lt;it&gt;in vitro &lt;/it&gt;and &lt;it&gt;in vivo &lt;/it&gt;gene expression data identified a signature, termed rapamycin metagene index (RMI), of 31 genes upregulated by rapamycin treatment &lt;it&gt;in vitro &lt;/it&gt;as well as &lt;it&gt;in vivo &lt;/it&gt;(false discovery rate of 10%). In the Miller dataset, RMI did not correlate with tumor size or lymph node status. High (&gt;75th percentile) RMI was significantly associated with longer survival (&lt;it&gt;P &lt;/it&gt;= 0.015). On multivariate analysis, RMI (&lt;it&gt;P &lt;/it&gt;= 0.029), tumor size (&lt;it&gt;P &lt;/it&gt;= 0.015) and lymph node status (&lt;it&gt;P &lt;/it&gt;= 0.001) were prognostic. In van 't Veer study, RMI was not associated with the time to develop distant metastasis (&lt;it&gt;P &lt;/it&gt;= 0.41). In the Wang dataset, RMI predicted time to disease relapse (&lt;it&gt;P &lt;/it&gt;= 0.009).&lt;/p&gt; &lt;p&gt;Conclusion&lt;/p&gt; &lt;p&gt;Rapamycin-regulated gene expression signature predicts clinical outcome in breast cancer. This supports the central role of mTOR signaling in breast cancer biology and provides further impetus to pursue mTOR-targeted therapies for breast cancer treatment.&lt;/p&gt; </description>
+                  <source>Molecular Cancer, Vol 8, Iss 1, p 75 (2009)</source>
+                  <relevantdate schemename="" classname="" schemeid="" classid=""/>
+                  <embargoenddate/>
+                  <storagedate/>
+                  <fulltext/>
+                  <resourcetype schemename="" classname="" schemeid="" classid=""/>
+                  <device/>
+                  <size/>
+                  <format/>
+                  <version/>
+                  <lastmetadataupdate/>
+                  <metadataversionnumber/>
+                  <originalId>oai:doaj.org/article:35952daeb74e4650a0a06812540c97eb</originalId>
+                  <originalId>oai:europepmc.org:1884661</originalId>
+                  <collectedfrom id="driver______::bee53aa31dc2cbb538c10c2b65fa5824" name="DOAJ-Articles"/>
+                  <collectedfrom id="opendoar____::8b6dd7db9af49e67306feb59a8bdc52c"
+                                 name="Europe PubMed Central"/>
+                  <pid schemename="dnet:pid_types" classname="pmc" schemeid="dnet:pid_types"
+                       classid="pmc">PMC2761377</pid>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:doaj.org/article:35952daeb74e4650a0a06812540c97eb</pid>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:europepmc.org:1884661</pid>
+                  <pid schemename="dnet:pid_types" classname="doi" schemeid="dnet:pid_types"
+                       classid="doi">10.1186/1476-4598-8-75</pid>
+                  <bestlicense schemename="dnet:access_modes" classname="Open Access"
+                               schemeid="dnet:access_modes"
+                               classid="OPEN"/>
+                  <datainfo>
+                     <inferred>true</inferred>
+                     <deletedbyinference>false</deletedbyinference>
+                     <trust>0.9</trust>
+                     <inferenceprovenance>dedup</inferenceprovenance>
+                     <provenanceaction schemename="dnet:provenanceActions" classname="sysimport:crosswalk:repository"
+                                       schemeid="dnet:provenanceActions"
+                                       classid="sysimport:crosswalk:repository"/>
+                  </datainfo>
+		                <rels>
+		                   <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">doajarticles::f54c865e280510d469d2099281537ed3</to>
+		                      <ranking>1</ranking>
+                        <fullname>Tsavachidis Spiridon</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::58349b18b69fe35a4f4ae887c0b4fbcf</to>
+		                      <ranking>2</ranking>
+                        <fullname>Zhang Li</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">doajarticles::392c86a47aab4b0166775ec6b3dc1831</to>
+		                      <ranking>4</ranking>
+                        <fullname>Meric-Bernstam Funda</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">doajarticles::4ab55a440fb782668855c8af6d47e2d0</to>
+		                      <ranking>3</ranking>
+                        <fullname>Akcakanat Argun</fullname>
+		                   </rel>
+		                </rels>
+		                <children>
+			                  <result objidentifier="od_______908::b75e105405c532160e5808c93e85984b">
+				                    <title schemename="dnet:dataCite_title" classname="main title"
+                               schemeid="dnet:dataCite_title"
+                               classid="main title">The rapamycin-regulated gene expression signature determines prognosis for breast cancer</title>
+                        <dateofacceptance>2009-01-01</dateofacceptance>
+                        <publisher>BioMed Central</publisher>
+                        <resulttype schemename="dnet:result_typologies" classname="publication"
+                                    schemeid="dnet:result_typologies"
+                                    classid="publication"/>
+			                  </result>
+                     <result objidentifier="doajarticles::619598e4c37f850d14d62ce4bf22b9b6">
+				                    <title schemename="dnet:dataCite_title" classname="main title"
+                               schemeid="dnet:dataCite_title"
+                               classid="main title">The rapamycin-regulated gene expression signature determines prognosis for breast cancer</title>
+                        <dateofacceptance>2009-09-01</dateofacceptance>
+                        <publisher>BioMed Central</publisher>
+                        <resulttype schemename="dnet:result_typologies" classname="publication"
+                                    schemeid="dnet:result_typologies"
+                                    classid="publication"/>
+			                  </result>
+                     <instance id="driver______::bee53aa31dc2cbb538c10c2b65fa5824">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Article"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0001"/>
+                        <hostedby id="driver______::bee53aa31dc2cbb538c10c2b65fa5824" name="DOAJ-Articles"/>
+				                    <webresource>
+				                       <url>http://www.molecular-cancer.com/content/8/1/75</url>
+				                    </webresource>
+
+			                  </instance>
+			                  <instance id="opendoar____::8b6dd7db9af49e67306feb59a8bdc52c">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Article"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0001"/>
+                        <hostedby id="opendoar____::8b6dd7db9af49e67306feb59a8bdc52c"
+                                  name="Europe PubMed Central"/>
+				                    <webresource>
+				                       <url>http://europepmc.org/articles/PMC2761377/</url>
+				                    </webresource>
+
+			                  </instance>
+
+		                </children>
+		             </oaf:result>
+
+            </oaf:entity>
+         </metadata>
+      </result>
+							<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:dri="http://www.driver-repository.eu/namespace/dri"
+              xmlns:oaf="http://namespace.openaire.eu/oaf">
+         <header>
+            <dri:objIdentifier>od_______908::36b19ac8a53fbb1fc3dfdb4ebf900810</dri:objIdentifier>
+            <dri:dateOfCollection>2013-07-31T13:43:45Z</dri:dateOfCollection>
+            <counters>
+	              <counter_authorship value="10"/>
+	           </counters>
+         </header>
+         <metadata>
+            <oaf:entity xsi:schemaLocation="http://namespace.openaire.eu/oaf https://www.openaire.eu/schema/0.2/oaf-0.2.xsd">
+		             <oaf:result>
+			               <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Research Paper</subject>
+                  <title schemename="dnet:dataCite_title" classname="main title"
+                         schemeid="dnet:dataCite_title"
+                         classid="main title">Pseudosubstrate regulation of the SCFβ-TrCP ubiquitin ligase by hnRNP-U</title>
+                  <dateofacceptance>2002-01-01</dateofacceptance>
+                  <publisher>Cold Spring Harbor Laboratory Press</publisher>
+                  <resulttype schemename="dnet:result_typologies" classname="publication"
+                              schemeid="dnet:result_typologies"
+                              classid="publication"/>
+                  <language schemename="dnet:languages" classname="English" schemeid="dnet:languages"
+                            classid="eng"/>
+                  <description>β-TrCP/E3RS (E3RS) is the F-box protein that functions as the receptor subunit of the SCFβ-TrCP ubiquitin ligase (E3). Surprisingly, although its two recognized substrates, IκBα and β-catenin, are present in the cytoplasm, we have found that E3RS is located predominantly in the nucleus. Here we report the isolation of the major E3RS-associated protein, hnRNP-U, an abundant nuclear phosphoprotein. This protein occupies E3RS in a specific and stoichiometric manner, stabilizes the E3 component, and is likely responsible for its nuclear localization. hnRNP-U binding was abolished by competition with a pIκBα peptide, or by a specific point mutation in the E3RS WD region, indicating an E3–substrate-type interaction. However, unlike pIκBα, which is targeted by SCFβ-TrCP for degradation, the E3-bound hnRNP-U is stable and is, therefore, a pseudosubstrate. Consequently, hnRNP-U engages a highly neddylated active SCFβ-TrCP, which dissociates in the presence of a high-affinity substrate, resulting in ubiquitination of the latter. Our study points to a novel regulatory mechanism, which secures the localization, stability, substrate binding threshold, and efficacy of a specific protein-ubiquitin ligase.</description>
+                  <relevantdate schemename="" classname="" schemeid="" classid=""/>
+                  <embargoenddate/>
+                  <storagedate/>
+                  <source/>
+                  <fulltext/>
+                  <resourcetype schemename="" classname="" schemeid="" classid=""/>
+                  <device/>
+                  <size/>
+                  <format/>
+                  <version/>
+                  <lastmetadataupdate/>
+                  <metadataversionnumber/>
+                  <originalId>oai:europepmc.org:1080985</originalId>
+                  <collectedfrom id="opendoar____::8b6dd7db9af49e67306feb59a8bdc52c"
+                                 name="Europe PubMed Central"/>
+                  <pid schemename="dnet:pid_types" classname="pmc" schemeid="dnet:pid_types"
+                       classid="pmc">PMC155337</pid>
+                  <pid schemename="dnet:pid_types" classname="doi" schemeid="dnet:pid_types"
+                       classid="doi">10.1101/gad.218702</pid>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:europepmc.org:1080985</pid>
+                  <bestlicense schemename="dnet:access_modes" classname="Open Access"
+                               schemeid="dnet:access_modes"
+                               classid="OPEN"/>
+                  <datainfo>
+                     <inferred>false</inferred>
+                     <deletedbyinference>false</deletedbyinference>
+                     <trust>0.9</trust>
+                     <inferenceprovenance/>
+                     <provenanceaction schemename="dnet:provenanceActions" classname="sysimport:crosswalk:repository"
+                                       schemeid="dnet:provenanceActions"
+                                       classid="sysimport:crosswalk:repository"/>
+                  </datainfo>
+		                <rels>
+		                   <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:rootToEntity)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::cf421b5e3d457c88e65a4c0f85a2fce5</to>
+		                      <ranking>9</ranking>
+                        <fullname>Mann, Matthias</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance=""
+                          inferred="false">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">od_______908::737565605dfa3bcfea10a36662bd6fe0</to>
+		                      <ranking>7</ranking>
+                        <fullname>Bauskin, Asne</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:rootToEntity)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::34874a60444239db218f25aff0132151</to>
+		                      <ranking>3</ranking>
+                        <fullname>Andersen, Jens S.</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:rootToEntity)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::348407e54ce9862807ba34b1a130f3ad</to>
+		                      <ranking>4</ranking>
+                        <fullname>Ben-shushan, Etti</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance=""
+                          inferred="false">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">od_______908::f1d1d563d30d97da3c46dffa9ec60583</to>
+		                      <ranking>2</ranking>
+                        <fullname>Hatzubai, Ada</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:rootToEntity)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::ddbe7fcb9fcf4294831c0ab4fd7670aa</to>
+		                      <ranking>10</ranking>
+                        <fullname>Ben-neriah, Yinon</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance=""
+                          inferred="false">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">od_______908::3b46fae61efb1f4911f3c6a5c1d9017c</to>
+		                      <ranking>6</ranking>
+                        <fullname>Yaron, Avraham</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance=""
+                          inferred="false">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">od_______908::3b64b303f1c6ec9a9d4f408d86887e5c</to>
+		                      <ranking>1</ranking>
+                        <fullname>Davis, Matti</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:rootToEntity)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::ac0fd39b7717e79167418cc7a479ddc3</to>
+		                      <ranking>8</ranking>
+                        <fullname>Mercurio, Frank</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance=""
+                          inferred="false">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">od_______908::6f1bfb6de3d874a71d86fa1244b6f2e0</to>
+		                      <ranking>5</ranking>
+                        <fullname>Fisher, Gregory Zvi</fullname>
+		                   </rel>
+		                </rels>
+		                <children>
+			                  <instance id="opendoar____::8b6dd7db9af49e67306feb59a8bdc52c">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Article"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0001"/>
+                        <hostedby id="opendoar____::8b6dd7db9af49e67306feb59a8bdc52c"
+                                  name="Europe PubMed Central"/>
+				                    <webresource>
+				                       <url>http://europepmc.org/articles/PMC155337/</url>
+				                    </webresource>
+
+			                  </instance>
+
+		                </children>
+		             </oaf:result>
+
+            </oaf:entity>
+         </metadata>
+      </result>
+							<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:dri="http://www.driver-repository.eu/namespace/dri"
+              xmlns:oaf="http://namespace.openaire.eu/oaf">
+         <header>
+            <dri:objIdentifier>od_______261::67168481d07bf0b72630f1c025daca92</dri:objIdentifier>
+            <dri:dateOfCollection>2014-10-28T06:23:28Z</dri:dateOfCollection>
+            <counters>
+	              <counter_authorship value="2"/>
+	           </counters>
+         </header>
+         <metadata>
+            <oaf:entity xsi:schemaLocation="http://namespace.openaire.eu/oaf https://www.openaire.eu/schema/0.2/oaf-0.2.xsd">
+		             <oaf:result>
+			               <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">R&amp;D management</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">capability building</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">joint ventures</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">licensing</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">innovation</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">emerging economies</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">white goods</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">automotive industry.</subject>
+                  <title schemename="dnet:dataCite_title" classname="main title"
+                         schemeid="dnet:dataCite_title"
+                         classid="main title">Joint ventures or independence? Alternative ways of R&amp;amp;D capability building at emerging economy firms</title>
+                  <dateofacceptance>2014-01-01</dateofacceptance>
+                  <publisher>Linköpings universitet, Tekniska högskolan</publisher>
+                  <resulttype schemename="dnet:result_typologies" classname="publication"
+                              schemeid="dnet:result_typologies"
+                              classid="publication"/>
+                  <language schemename="dnet:languages" classname="English" schemeid="dnet:languages"
+                            classid="eng"/>
+                  <description>Studies of the rapid economic development in East Asia suggest several factors which influence how industries inlatecomer economies can utilize external knowledge to upgrade from low-end manufacturing to full-blown productdevelopment capabilities. A main aspect in this process is the learning and capability development at the level of firms.However, there are few studies of the innovation journey of specific latecomer firms and the challenges, managerialefforts and uncertainties involved in accessing and learning from international knowledge centers. Specifically, thevarious ways to acquire knowledge for innovation suggested in the literature need to be examined.This paper analyzes the strategic options confronting latecomer firms which aspire to succeed in global competition.Based on in-depth studies in two Turkish industries, white goods and automotive, the paper details the combination ofefforts and investments required to move up the technology ladder from license-based domestic businesses tointernationally competitive capabilities. Two principal ways of acquiring innovation proficiency are compared:independent capability building versus international joint ventures. The paper shows the power of the former, but alsoindicates the difficulty of fostering brand value commensurate with technological achievements. Further the analysisreveals the reasons for and the limits of the alternative way, joint venture agreements, where MNEs tend to retainexclusive control of core technologies. The discussion section suggests that in sectors where independent capabilitybuilding is implausible; it might be possible to position local firms as global niche centers of excellence withinmultinational configurations, if private and government efforts are skilfully coordinated. </description>
+                  <relevantdate schemename="" classname="" schemeid="" classid=""/>
+                  <embargoenddate/>
+                  <storagedate/>
+                  <source/>
+                  <fulltext/>
+                  <resourcetype schemename="" classname="" schemeid="" classid=""/>
+                  <device/>
+                  <size/>
+                  <format/>
+                  <version/>
+                  <lastmetadataupdate/>
+                  <metadataversionnumber/>
+                  <originalId>oai:DiVA.org:liu-105725</originalId>
+                  <collectedfrom id="opendoar____::b1a59b315fc9a3002ce38bbe070ec3f5"
+                                 name="Publikationer från Linköpings universitet"/>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:DiVA.org:liu-105725</pid>
+                  <bestlicense schemename="dnet:access_modes" classname="Open Access"
+                               schemeid="dnet:access_modes"
+                               classid="OPEN"/>
+                  <datainfo>
+                     <inferred>false</inferred>
+                     <deletedbyinference>false</deletedbyinference>
+                     <trust>0.9</trust>
+                     <inferenceprovenance/>
+                     <provenanceaction schemename="dnet:provenanceActions" classname="sysimport:crosswalk:repository"
+                                       schemeid="dnet:provenanceActions"
+                                       classid="sysimport:crosswalk:repository"/>
+                  </datainfo>
+		                <rels>
+		                   <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:rootToEntity)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::e80f6987b94cd199d34bb1c39c66724f</to>
+		                      <ranking>1</ranking>
+                        <fullname>Karabag, Solmaz Filiz</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance=""
+                          inferred="false">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">od_______261::d84988e14a6adfd90b35ad61008693f7</to>
+		                      <ranking>2</ranking>
+                        <fullname>Berggren, Christian</fullname>
+		                   </rel>
+		                </rels>
+		                <children>
+			                  <instance id="opendoar____::b1a59b315fc9a3002ce38bbe070ec3f5">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Conference object"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0004"/>
+                        <hostedby id="opendoar____::b1a59b315fc9a3002ce38bbe070ec3f5"
+                                  name="Publikationer från Linköpings universitet"/>
+				                    <webresource>
+				                       <url>http://urn.kb.se/resolve?urn=urn:nbn:se:liu:diva-105725</url>
+				                    </webresource>
+
+			                  </instance>
+
+		                </children>
+		             </oaf:result>
+
+            </oaf:entity>
+         </metadata>
+      </result>
+							<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:dri="http://www.driver-repository.eu/namespace/dri"
+              xmlns:oaf="http://namespace.openaire.eu/oaf">
+         <header>
+            <dri:objIdentifier>od_______261::702928baccb0adf3a4d8afaa474972c6</dri:objIdentifier>
+            <dri:dateOfCollection>2014-10-28T06:23:28Z</dri:dateOfCollection>
+            <counters>
+	              <counter_authorship value="1"/>
+	           </counters>
+         </header>
+         <metadata>
+            <oaf:entity xsi:schemaLocation="http://namespace.openaire.eu/oaf https://www.openaire.eu/schema/0.2/oaf-0.2.xsd">
+		             <oaf:result>
+			               <title schemename="dnet:dataCite_title" classname="main title"
+                         schemeid="dnet:dataCite_title"
+                         classid="main title">Ohälsan tiger inte still : En kartläggning av hinder för integration i arbetslivet</title>
+                  <dateofacceptance>2011-01-01</dateofacceptance>
+                  <publisher>Linköping</publisher>
+                  <resulttype schemename="dnet:result_typologies" classname="publication"
+                              schemeid="dnet:result_typologies"
+                              classid="publication"/>
+                  <language schemename="dnet:languages" classname="Swedish" schemeid="dnet:languages"
+                            classid="swe"/>
+                  <description>"Vi kan inte hålla på att coacha och rehabilitera individen till en arbetsmarknad som inte tar emot dem." Tidigare rapporter från TIA har påtalat att hälsa/ohälsa är en viktig aspekt i ESFprojektens verksamhet (se t.ex. Thörnquist 2011). Den här studien syftar till att kartlägga olika former av hinder i samband med ohälsa för att skapa återgång/integration i arbetslivet för personer med utländsk bakgrund. Hinder kan finnas på samhällelig, organisations- och individnivå. I en tidigare studie (Larsson 2007) visades vid en listning gjord av deltagare att det fanns 38 olika hinder eller kollisioner i regelsystem som hindrade dem från att återgå till arbetslivet efter en långtidssjukskrivning. Projektet som studerades finansierades av Europeiska Socialfondens Equalprogram 2002–2005. Studien omfattar några utvalda projekt i ESF:s programområde 2, Ökat arbetskraftsutbud, som i första hand riktar sig till deltagare som har annan etnicitet än svensk och som har någon form av ohälsa. Rapporten inleds med en kortare introduktion i ämnet etnicitet och ohälsa samt problematisering av begreppet hälsa. Sedan följer en beskrivning av de fem projekt som ingår i studien. Därefter tematiseras de olika hinder som projekten lyfter fram. Rapporten avslutas med reflektioner och rekommendationer. </description>
+                  <subject schemename="" classname="" schemeid="" classid=""/>
+                  <relevantdate schemename="" classname="" schemeid="" classid=""/>
+                  <embargoenddate/>
+                  <storagedate/>
+                  <source/>
+                  <fulltext/>
+                  <resourcetype schemename="" classname="" schemeid="" classid=""/>
+                  <device/>
+                  <size/>
+                  <format/>
+                  <version/>
+                  <lastmetadataupdate/>
+                  <metadataversionnumber/>
+                  <originalId>oai:DiVA.org:liu-74349</originalId>
+                  <collectedfrom id="opendoar____::b1a59b315fc9a3002ce38bbe070ec3f5"
+                                 name="Publikationer från Linköpings universitet"/>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:DiVA.org:liu-74349</pid>
+                  <bestlicense schemename="dnet:access_modes" classname="Open Access"
+                               schemeid="dnet:access_modes"
+                               classid="OPEN"/>
+                  <datainfo>
+                     <inferred>false</inferred>
+                     <deletedbyinference>false</deletedbyinference>
+                     <trust>0.9</trust>
+                     <inferenceprovenance/>
+                     <provenanceaction schemename="dnet:provenanceActions" classname="sysimport:crosswalk:repository"
+                                       schemeid="dnet:provenanceActions"
+                                       classid="sysimport:crosswalk:repository"/>
+                  </datainfo>
+		                <rels>
+		                   <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance=""
+                          inferred="false">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">od_______261::8141f371f50a3014df930f474c76208e</to>
+		                      <ranking>1</ranking>
+                        <fullname>Larsson, Ann-christine</fullname>
+		                   </rel>
+		                </rels>
+		                <children>
+			                  <instance id="opendoar____::b1a59b315fc9a3002ce38bbe070ec3f5">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Report"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0017"/>
+                        <hostedby id="opendoar____::b1a59b315fc9a3002ce38bbe070ec3f5"
+                                  name="Publikationer från Linköpings universitet"/>
+				                    <webresource>
+				                       <url>http://urn.kb.se/resolve?urn=urn:nbn:se:liu:diva-74349</url>
+				                    </webresource>
+
+			                  </instance>
+
+		                </children>
+		             </oaf:result>
+
+            </oaf:entity>
+         </metadata>
+      </result>
+							<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:dri="http://www.driver-repository.eu/namespace/dri"
+              xmlns:oaf="http://namespace.openaire.eu/oaf">
+         <header>
+            <dri:objIdentifier>dedup_wf_001::621dd917310d9e3f776d2e6908072d01</dri:objIdentifier>
+            <dri:dateOfCollection>2014-12-12T14:54:13Z</dri:dateOfCollection>
+            <counters>
+	              <counter_authorship value="3"/>
+               <counter_dedup value="2"/>
+	           </counters>
+         </header>
+         <metadata>
+            <oaf:entity xsi:schemaLocation="http://namespace.openaire.eu/oaf https://www.openaire.eu/schema/0.2/oaf-0.2.xsd">
+		             <oaf:result>
+			               <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">DOAJ:General and Civil Engineering</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:T</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:Engineering (General). Civil engineering (General)</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:TA1501-1820</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:TA1-2040</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:Applied optics. Photonics</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">DOAJ:Technology and Engineering</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:Technology</subject>
+                  <title schemename="dnet:dataCite_title" classname="main title"
+                         schemeid="dnet:dataCite_title"
+                         classid="main title">Feature Classification for Robust Shape-Based Collaborative Tracking and Model Updating</title>
+                  <dateofacceptance>2008-09-01</dateofacceptance>
+                  <publisher>Hindawi Publishing Corporation</publisher>
+                  <resulttype schemename="dnet:result_typologies" classname="publication"
+                              schemeid="dnet:result_typologies"
+                              classid="publication"/>
+                  <language schemename="dnet:languages" classname="English" schemeid="dnet:languages"
+                            classid="eng"/>
+                  <journal eissn="1687-5281" issn="1687-5176" lissn="">EURASIP Journal on Image and Video Processing</journal>
+                  <description>&lt;p&gt;Abstract&lt;/p&gt; &lt;p&gt;A new collaborative tracking approach is introduced which takes advantage of classified features. The core of this tracker is a single tracker that is able to detect occlusions and classify features contributing in localizing the object. Features are classified in four classes: good, suspicious, malicious, and neutral. Good features are estimated to be parts of the object with a high degree of confidence. Suspicious ones have a lower, yet significantly high, degree of confidence to be a part of the object. Malicious features are estimated to be generated by clutter, while neutral features are characterized with not a sufficient level of uncertainty to be assigned to the tracked object. When there is no occlusion, the single tracker acts alone, and the feature classification module helps it to overcome distracters such as still objects or little clutter in the scene. When more than one desired moving objects bounding boxes are close enough, the collaborative tracker is activated and it exploits the advantages of the classified features to localize each object precisely as well as updating the objects shape models more precisely by assigning again the classified features to the objects. The experimental results show successful tracking compared with the collaborative tracker that does not use the classified features. Moreover, more precise updated object shape models will be shown.&lt;/p&gt;</description>
+                  <source>EURASIP Journal on Image and Video Processing, Vol 2008 (2008)</source>
+                  <source>EURASIP Journal on Image and Video Processing, Vol 2008, Iss 1, p 274349 (2008)</source>
+                  <relevantdate schemename="" classname="" schemeid="" classid=""/>
+                  <embargoenddate/>
+                  <storagedate/>
+                  <fulltext/>
+                  <resourcetype schemename="" classname="" schemeid="" classid=""/>
+                  <device/>
+                  <size/>
+                  <format/>
+                  <version/>
+                  <lastmetadataupdate/>
+                  <metadataversionnumber/>
+                  <originalId>oai:doaj.org/article:d96a79e6f5ca4a6b8cce12470aa738ee</originalId>
+                  <originalId>oai:doaj.org/article:53c1d315263c49a393788992ae893f64</originalId>
+                  <collectedfrom id="driver______::bee53aa31dc2cbb538c10c2b65fa5824" name="DOAJ-Articles"/>
+                  <pid schemename="dnet:pid_types" classname="doi" schemeid="dnet:pid_types"
+                       classid="doi">10.1155/2008/274349</pid>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:doaj.org/article:d96a79e6f5ca4a6b8cce12470aa738ee</pid>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:doaj.org/article:53c1d315263c49a393788992ae893f64</pid>
+                  <bestlicense schemename="dnet:access_modes" classname="Open Access"
+                               schemeid="dnet:access_modes"
+                               classid="OPEN"/>
+                  <datainfo>
+                     <inferred>true</inferred>
+                     <deletedbyinference>false</deletedbyinference>
+                     <trust>0.9</trust>
+                     <inferenceprovenance>dedup</inferenceprovenance>
+                     <provenanceaction schemename="dnet:provenanceActions" classname="sysimport:crosswalk:repository"
+                                       schemeid="dnet:provenanceActions"
+                                       classid="sysimport:crosswalk:repository"/>
+                  </datainfo>
+		                <rels>
+		                   <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::0f72b319c8a288d7113235b6fc2ab1e7</to>
+		                      <ranking>3</ranking>
+                        <fullname>Asadi, M.</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::c7f61a839caa7fed810e0477c8d9bc5b</to>
+		                      <ranking>2</ranking>
+                        <fullname>Monti, F.</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">doajarticles::3f73f58fb473afd91e23146054d1624d</to>
+		                      <ranking>1</ranking>
+                        <fullname>Regazzoni, C. S.</fullname>
+		                   </rel>
+		                </rels>
+		                <children>
+			                  <result objidentifier="doajarticles::621dd917310d9e3f776d2e6908072d01">
+				                    <title schemename="dnet:dataCite_title" classname="main title"
+                               schemeid="dnet:dataCite_title"
+                               classid="main title">Feature Classification for Robust Shape-Based Collaborative Tracking and Model Updating</title>
+                        <dateofacceptance>2008-09-01</dateofacceptance>
+                        <publisher>Hindawi Publishing Corporation</publisher>
+                        <resulttype schemename="dnet:result_typologies" classname="publication"
+                                    schemeid="dnet:result_typologies"
+                                    classid="publication"/>
+			                  </result>
+                     <result objidentifier="doajarticles::edc0cea2649085b05c831c3261a0d01a">
+				                    <title schemename="dnet:dataCite_title" classname="main title"
+                               schemeid="dnet:dataCite_title"
+                               classid="main title">Feature Classification for Robust Shape-Based Collaborative Tracking and Model Updating</title>
+                        <dateofacceptance>2008-01-01</dateofacceptance>
+                        <publisher>BioMed Central</publisher>
+                        <resulttype schemename="dnet:result_typologies" classname="publication"
+                                    schemeid="dnet:result_typologies"
+                                    classid="publication"/>
+			                  </result>
+                     <instance id="driver______::bee53aa31dc2cbb538c10c2b65fa5824">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Article"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0001"/>
+                        <hostedby id="driver______::bee53aa31dc2cbb538c10c2b65fa5824" name="DOAJ-Articles"/>
+				                    <webresource>
+				                       <url>http://jivp.eurasipjournals.com/content/2008/274349</url>
+				                    </webresource>
+
+			                  </instance>
+			                  <instance id="driver______::bee53aa31dc2cbb538c10c2b65fa5824">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Article"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0001"/>
+                        <hostedby id="driver______::bee53aa31dc2cbb538c10c2b65fa5824" name="DOAJ-Articles"/>
+				                    <webresource>
+				                       <url>http://dx.doi.org/10.1155/2008/274349</url>
+				                    </webresource>
+
+			                  </instance>
+
+		                </children>
+		             </oaf:result>
+
+            </oaf:entity>
+         </metadata>
+      </result>
+							<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:dri="http://www.driver-repository.eu/namespace/dri"
+              xmlns:oaf="http://namespace.openaire.eu/oaf">
+         <header>
+            <dri:objIdentifier>od_______165::07458e2f278b139f672dc95677241f3f</dri:objIdentifier>
+            <dri:dateOfCollection>2014-06-14T21:26:13Z</dri:dateOfCollection>
+            <counters>
+	              <counter_authorship value="1"/>
+               <counter_outcome value="1"/>
+	           </counters>
+         </header>
+         <metadata>
+            <oaf:entity xsi:schemaLocation="http://namespace.openaire.eu/oaf https://www.openaire.eu/schema/0.2/oaf-0.2.xsd">
+		             <oaf:result>
+			               <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">[INFO:INFO_RB] Computer Science/Robotics</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">[INFO:INFO_RB] Informatique/Robotique</subject>
+                  <title schemename="dnet:dataCite_title" classname="main title"
+                         schemeid="dnet:dataCite_title"
+                         classid="main title">Local Decomposition and Observability Properties for Automatic Calibration in Mobile Robotics</title>
+                  <dateofacceptance>2009-01-01</dateofacceptance>
+                  <resulttype schemename="dnet:result_typologies" classname="publication"
+                              schemeid="dnet:result_typologies"
+                              classid="publication"/>
+                  <language schemename="dnet:languages" classname="English" schemeid="dnet:languages"
+                            classid="eng"/>
+                  <description>This paper considers the problem of sensor self-calibration in mobile robotics by only using a single point feature (e.g. a source of light). In particular, the problem of determining the extrinsic parameters of a bearing sensor mounted on a mobile platform (e.g. a camera) and simultaneously estimating the parameters describing the systematic error in the odometry system is discussed. Special attention is devoted to investigate the dependence of the observability properties of these parameters on the chosen robot trajectory. The main contribution provided by this paper is the introduction of a new method to deal with estimation problems in the framework of mobile robotics. Specifically, a calibration problem has been considered. However, the same method can be adopted to solve other fundamental estimation problems. The method is based on the theory of distributions which exploits all the system Lie symmetries. Regarding the considered calibration problem this method allows analytically detecting the combinations of the calibration parameters which are observable for a given robot trajectory. Experiments are provided to validate the results.</description>
+                  <source>Icra</source>
+                  <relevantdate schemename="" classname="" schemeid="" classid=""/>
+                  <publisher/>
+                  <embargoenddate/>
+                  <storagedate/>
+                  <fulltext/>
+                  <resourcetype schemename="" classname="" schemeid="" classid=""/>
+                  <device/>
+                  <size/>
+                  <format/>
+                  <version/>
+                  <lastmetadataupdate/>
+                  <metadataversionnumber/>
+                  <originalId>oai:hal.inria.fr:inria-00359939</originalId>
+                  <collectedfrom id="opendoar____::9766527f2b5d3e95d4a733fcfb77bd7e"
+                                 name="INRIA a CCSD electronic archive server"/>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:hal.inria.fr:inria-00359939</pid>
+                  <bestlicense schemename="dnet:access_modes" classname="Open Access"
+                               schemeid="dnet:access_modes"
+                               classid="OPEN"/>
+                  <context id="ec" label="European Community" type="funding">
+                     <category id="ec::fp7" label="FP7">
+                        <concept id="ec::fp7::sp1" label="SP1"/>
+                        <concept id="ec::fp7::sp1::ict" label="ICT"/>
+                     </category>
+                  </context>
+                  <datainfo>
+                     <inferred>false</inferred>
+                     <deletedbyinference>false</deletedbyinference>
+                     <trust>0.9</trust>
+                     <inferenceprovenance/>
+                     <provenanceaction schemename="dnet:provenanceActions" classname="sysimport:crosswalk:repository"
+                                       schemeid="dnet:provenanceActions"
+                                       classid="sysimport:crosswalk:repository"/>
+                  </datainfo>
+		                <rels>
+		                   <rel provenanceaction="iis" trust="0.897"
+                          inferenceprovenance="iis::document_referencedProjects"
+                          inferred="true">
+		                      <to scheme="dnet:result_project_relations" class="isProducedBy" type="project">corda_______::0d02345f18345af4def31782d9f28022</to>
+		                      <code>231855</code>
+                        <acronym>SFLY</acronym>
+                        <title>Swarm of Micro Flying Robots</title>
+                        <contracttype schemename="ec:FP7contractTypes" classname="Collaborative project"
+                                      schemeid="ec:FP7contractTypes"
+                                      classid="CP"/>
+                        <funding>
+                           <funding_level_0>FP7</funding_level_0>
+                           <funding_level_1>FP7::SP1</funding_level_1>
+                           <funding_level_2>FP7::SP1::ICT</funding_level_2>
+                        </funding>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:rootToEntity)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::f6bc95b553a1761b24b85fe0d26e3ceb</to>
+		                      <ranking>1</ranking>
+                        <fullname>Martinelli, Agostino</fullname>
+		                   </rel>
+		                </rels>
+		                <children>
+			                  <instance id="opendoar____::9766527f2b5d3e95d4a733fcfb77bd7e">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Conference object"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0004"/>
+                        <hostedby id="opendoar____::9766527f2b5d3e95d4a733fcfb77bd7e"
+                                  name="INRIA a CCSD electronic archive server"/>
+				                    <webresource>
+				                       <url>http://hal.inria.fr/inria-00359939</url>
+				                    </webresource>
+				                    <webresource>
+				                       <url>http://hal.inria.fr/docs/00/35/99/39/PDF/r2.pdf</url>
+				                    </webresource>
+
+			                  </instance>
+
+		                </children>
+		             </oaf:result>
+
+            </oaf:entity>
+         </metadata>
+      </result>
+							<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:dri="http://www.driver-repository.eu/namespace/dri"
+              xmlns:oaf="http://namespace.openaire.eu/oaf">
+         <header>
+            <dri:objIdentifier>dedup_wf_001::2a912ab32663f822a9a370b176380bc8</dri:objIdentifier>
+            <dri:dateOfCollection>2014-12-12T08:13:12Z</dri:dateOfCollection>
+            <counters>
+	              <counter_authorship value="1"/>
+               <counter_dedup value="2"/>
+	           </counters>
+         </header>
+         <metadata>
+            <oaf:entity xsi:schemaLocation="http://namespace.openaire.eu/oaf https://www.openaire.eu/schema/0.2/oaf-0.2.xsd">
+		             <oaf:result>
+			               <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Mathematics - Combinatorics</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:Mathematics</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:QA1-939</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:Science</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">05B20:05B30</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">DOAJ:Mathematics</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">LCC:Q</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">DOAJ:Mathematics and Statistics</subject>
+                  <title schemename="dnet:dataCite_title" classname="main title"
+                         schemeid="dnet:dataCite_title"
+                         classid="main title">Classification of normal sequences</title>
+                  <dateofacceptance>2010-08-03</dateofacceptance>
+                  <publisher>Hindawi Publishing Corporation</publisher>
+                  <resulttype schemename="dnet:result_typologies" classname="publication"
+                              schemeid="dnet:result_typologies"
+                              classid="publication"/>
+                  <language schemename="dnet:languages" classname="English" schemeid="dnet:languages"
+                            classid="eng"/>
+                  <journal eissn="1687-9171" issn="1687-9163" lissn="">International Journal of Combinatorics</journal>
+                  <description>  Base sequences BS(m,n) are quadruples (A;B;C;D) of {+1,-1}-sequences, with A
+			and B of length m and C and D of length n, such that the sum of their
+			nonperiodic autocorrelation functions is a delta-function. Normal sequences
+			NS(n) are base sequences (A;B;C;D) in BS(n,n) such that A=B. We introduce a
+			definition of equivalence for normal sequences NS(n), and construct a canonical
+			form. By using this canonical form, we have enumerated the equivalence classes
+			of NS(n) for n &lt;= 40.
+			</description>
+                  <source>International Journal of Combinatorics, Vol 2011 (2011)</source>
+                  <relevantdate schemename="" classname="" schemeid="" classid=""/>
+                  <embargoenddate/>
+                  <storagedate/>
+                  <fulltext/>
+                  <resourcetype schemename="" classname="" schemeid="" classid=""/>
+                  <device/>
+                  <size/>
+                  <format/>
+                  <version/>
+                  <lastmetadataupdate/>
+                  <metadataversionnumber/>
+                  <originalId>oai:arXiv.org:1008.0656</originalId>
+                  <originalId>oai:doaj.org/article:70257ca705c0483fb2d6e6fbf23a2b1a</originalId>
+                  <collectedfrom id="opendoar____::6f4922f45568161a8cdf4ad2299f6d23"
+                                 name="arXiv.org e-Print Archive"/>
+                  <collectedfrom id="driver______::bee53aa31dc2cbb538c10c2b65fa5824" name="DOAJ-Articles"/>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:arXiv.org:1008.0656</pid>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:doaj.org/article:70257ca705c0483fb2d6e6fbf23a2b1a</pid>
+                  <pid schemename="dnet:pid_types" classname="doi" schemeid="dnet:pid_types"
+                       classid="doi">10.1155/2011/937941</pid>
+                  <bestlicense schemename="dnet:access_modes" classname="Open Access"
+                               schemeid="dnet:access_modes"
+                               classid="OPEN"/>
+                  <datainfo>
+                     <inferred>true</inferred>
+                     <deletedbyinference>false</deletedbyinference>
+                     <trust>0.9</trust>
+                     <inferenceprovenance>dedup</inferenceprovenance>
+                     <provenanceaction schemename="dnet:provenanceActions" classname="sysimport:crosswalk:repository"
+                                       schemeid="dnet:provenanceActions"
+                                       classid="sysimport:crosswalk:repository"/>
+                  </datainfo>
+		                <rels>
+		                   <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">doajarticles::6230caf1396ee6dfc39b5351f9c50c7c</to>
+		                      <ranking>1</ranking>
+                        <fullname>Dragomir &amp;amp;#381;. &amp;amp;#xD0;okovi&amp;amp;#263;</fullname>
+		                   </rel>
+		                </rels>
+		                <children>
+			                  <result objidentifier="od________18::6c15e0176ae535336dff7841ceaf097c">
+				                    <title schemename="dnet:dataCite_title" classname="main title"
+                               schemeid="dnet:dataCite_title"
+                               classid="main title">Classification of normal sequences</title>
+                        <dateofacceptance>2010-08-03</dateofacceptance>
+                        <resulttype schemename="dnet:result_typologies" classname="publication"
+                                    schemeid="dnet:result_typologies"
+                                    classid="publication"/>
+			                  </result>
+                     <result objidentifier="doajarticles::2a912ab32663f822a9a370b176380bc8">
+				                    <title schemename="dnet:dataCite_title" classname="main title"
+                               schemeid="dnet:dataCite_title"
+                               classid="main title">Classification of Normal Sequences</title>
+                        <dateofacceptance>2011-01-01</dateofacceptance>
+                        <publisher>Hindawi Publishing Corporation</publisher>
+                        <resulttype schemename="dnet:result_typologies" classname="publication"
+                                    schemeid="dnet:result_typologies"
+                                    classid="publication"/>
+			                  </result>
+                     <instance id="driver______::bee53aa31dc2cbb538c10c2b65fa5824">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Article"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0001"/>
+                        <hostedby id="driver______::bee53aa31dc2cbb538c10c2b65fa5824" name="DOAJ-Articles"/>
+				                    <webresource>
+				                       <url>http://dx.doi.org/10.1155/2011/937941</url>
+				                    </webresource>
+
+			                  </instance>
+			                  <instance id="opendoar____::6f4922f45568161a8cdf4ad2299f6d23">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Article"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0001"/>
+                        <hostedby id="opendoar____::6f4922f45568161a8cdf4ad2299f6d23"
+                                  name="arXiv.org e-Print Archive"/>
+				                    <webresource>
+				                       <url>http://arxiv.org/abs/1008.0656</url>
+				                    </webresource>
+
+			                  </instance>
+
+		                </children>
+		             </oaf:result>
+
+            </oaf:entity>
+         </metadata>
+      </result>
+							<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:dri="http://www.driver-repository.eu/namespace/dri"
+              xmlns:oaf="http://namespace.openaire.eu/oaf">
+         <header>
+            <dri:objIdentifier>dedup_wf_001::2a9ef6f3ca4e37f2e3502274d5b30a18</dri:objIdentifier>
+            <dri:dateOfCollection>2014-12-11T22:55:06Z</dri:dateOfCollection>
+            <counters>
+	              <counter_authorship value="3"/>
+               <counter_dedup value="2"/>
+	           </counters>
+         </header>
+         <metadata>
+            <oaf:entity xsi:schemaLocation="http://namespace.openaire.eu/oaf https://www.openaire.eu/schema/0.2/oaf-0.2.xsd">
+		             <oaf:result>
+			               <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">earnings</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">J31</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">I20</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">unemployment</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Zentralisierung</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">J24</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">J64</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">central exit exams</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Arbeitslosigkeit</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Bildungsabschluss</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">ddc:330</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Deutschland</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Germany</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Bildungsertrag</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Berufseinstieg</subject>
+                  <title schemename="dnet:dataCite_title" classname="main title"
+                         schemeid="dnet:dataCite_title"
+                         classid="main title">Central school exit exams and labor-market outcomes</title>
+                  <dateofacceptance>2012-01-01</dateofacceptance>
+                  <publisher>CESifo München</publisher>
+                  <resulttype schemename="dnet:result_typologies" classname="publication"
+                              schemeid="dnet:result_typologies"
+                              classid="publication"/>
+                  <language schemename="dnet:languages" classname="English" schemeid="dnet:languages"
+                            classid="eng"/>
+                  <description>Many countries use centralized exit exams as a governance devise of the school system. While abundant evidence suggests positive effects of central exams on achievement tests, previous research on university-bound students shows no effects on subsequent earnings. We suggest that labor-market effects may be more imminent for students leaving school directly for the labor market and, on rigid labor markets, for unemployment. Exploiting variation in exit-exam systems across German states, we find that central exams are indeed associated with higher earnings for students from school types directly bound for the labor market, as well as with lower unemployment.</description>
+                  <relevantdate schemename="" classname="" schemeid="" classid=""/>
+                  <embargoenddate/>
+                  <storagedate/>
+                  <source/>
+                  <fulltext/>
+                  <resourcetype schemename="" classname="" schemeid="" classid=""/>
+                  <device/>
+                  <size/>
+                  <format/>
+                  <version/>
+                  <lastmetadataupdate/>
+                  <metadataversionnumber/>
+                  <originalId>oai:econstor.eu:10419/67265</originalId>
+                  <originalId>oai:econstor.eu:10419/64855</originalId>
+                  <collectedfrom id="opendoar____::7fea637fd6d02b8f0adf6f7dc36aed93" name="EconStor"/>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:econstor.eu:10419/67265</pid>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:econstor.eu:10419/64855</pid>
+                  <bestlicense schemename="dnet:access_modes" classname="Open Access"
+                               schemeid="dnet:access_modes"
+                               classid="OPEN"/>
+                  <datainfo>
+                     <inferred>true</inferred>
+                     <deletedbyinference>false</deletedbyinference>
+                     <trust>0.9</trust>
+                     <inferenceprovenance>dedup</inferenceprovenance>
+                     <provenanceaction schemename="dnet:provenanceActions" classname="sysimport:crosswalk:repository"
+                                       schemeid="dnet:provenanceActions"
+                                       classid="sysimport:crosswalk:repository"/>
+                  </datainfo>
+		                <rels>
+		                   <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::dbb5e1ec656e863df62b9688ed6e87cf</to>
+		                      <ranking>3</ranking>
+                        <fullname>Woessmann, Ludger</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::e0475dc07d3ebd7fb0d5fa1114613f2a</to>
+		                      <ranking>2</ranking>
+                        <fullname>Schwerdt, Guido</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">od______1687::0902f73086109ba15d0006071a24c06e</to>
+		                      <ranking>1</ranking>
+                        <fullname>Piopiunik, Marc</fullname>
+		                   </rel>
+		                </rels>
+		                <children>
+			                  <result objidentifier="od______1687::35913d0ee69d3bef7da21efa4a7960de">
+				                    <title schemename="dnet:dataCite_title" classname="main title"
+                               schemeid="dnet:dataCite_title"
+                               classid="main title">Central school exit exams and labor-market outcomes</title>
+                        <dateofacceptance>2012-01-01</dateofacceptance>
+                        <publisher>IZA Bonn</publisher>
+                        <resulttype schemename="dnet:result_typologies" classname="publication"
+                                    schemeid="dnet:result_typologies"
+                                    classid="publication"/>
+			                  </result>
+                     <result objidentifier="od______1687::2a9ef6f3ca4e37f2e3502274d5b30a18">
+				                    <title schemename="dnet:dataCite_title" classname="main title"
+                               schemeid="dnet:dataCite_title"
+                               classid="main title">Central school exit exams and labor-market outcomes</title>
+                        <dateofacceptance>2012-01-01</dateofacceptance>
+                        <publisher>CESifo München</publisher>
+                        <resulttype schemename="dnet:result_typologies" classname="publication"
+                                    schemeid="dnet:result_typologies"
+                                    classid="publication"/>
+			                  </result>
+                     <instance id="opendoar____::7fea637fd6d02b8f0adf6f7dc36aed93">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Research"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0014"/>
+                        <hostedby id="opendoar____::7fea637fd6d02b8f0adf6f7dc36aed93" name="EconStor"/>
+				                    <webresource>
+				                       <url>http://hdl.handle.net/10419/67265</url>
+				                    </webresource>
+
+			                  </instance>
+			                  <instance id="opendoar____::7fea637fd6d02b8f0adf6f7dc36aed93">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Research"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0014"/>
+                        <hostedby id="opendoar____::7fea637fd6d02b8f0adf6f7dc36aed93" name="EconStor"/>
+				                    <webresource>
+				                       <url>http://hdl.handle.net/10419/64855</url>
+				                    </webresource>
+
+			                  </instance>
+
+		                </children>
+		             </oaf:result>
+
+            </oaf:entity>
+         </metadata>
+      </result>
+							<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:dri="http://www.driver-repository.eu/namespace/dri"
+              xmlns:oaf="http://namespace.openaire.eu/oaf">
+         <header>
+            <dri:objIdentifier>dedup_wf_001::2aa066b7cef6627aba1fc54ef475519f</dri:objIdentifier>
+            <dri:dateOfCollection>2014-12-13T00:26:01Z</dri:dateOfCollection>
+            <counters>
+	              <counter_authorship value="1"/>
+               <counter_dedup value="2"/>
+	           </counters>
+         </header>
+         <metadata>
+            <oaf:entity xsi:schemaLocation="http://namespace.openaire.eu/oaf https://www.openaire.eu/schema/0.2/oaf-0.2.xsd">
+		             <oaf:result>
+			               <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Óptica fisiológica</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">53 - Física</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">617 - Cirugía. Ortopedia. Oftalmología</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">535 - Óptica</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">CDU::5 - Ciencias puras y naturales::53 - Física::535 - Óptica</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">CDU::5 - Ciencias puras y naturales::53 - Física</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">Física</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">CDU::6 - Ciencias aplicadas::61 - Medicina::617 - Cirugía. Ortopedia. Oftalmología</subject>
+                  <title schemename="dnet:dataCite_title" classname="main title"
+                         schemeid="dnet:dataCite_title"
+                         classid="main title">Estudio de fenómenos dinámicos de la óptica del ojo humano</title>
+                  <dateofacceptance>2011-01-14</dateofacceptance>
+                  <publisher>Universidad de Murcia</publisher>
+                  <resulttype schemename="dnet:result_typologies" classname="publication"
+                              schemeid="dnet:result_typologies"
+                              classid="publication"/>
+                  <language schemename="dnet:languages" classname="Spanish; Castilian"
+                            schemeid="dnet:languages"
+                            classid="spa"/>
+                  <description>Abordando las importantes características dinámicas del ojo, se han planteado una serie de experimentos que permiten el estudio de algunas de estas propiedades dinámicas, para proporcionar nueva información sobre el sistema visual. Para dichos experimentos, se han diseñado y construido tres instrumentos de medida basados todos en el concepto del sensor de Hartmann-Shack (HS), cada uno con características particulares: sensor HS de alta resolución temporal, sensor HS de campo amplio y sensor HS con iluminación invisible. Con estos instrumentos se abordan condiciones específicas que pueden afectar la dinámica del ojo, como los posibles efectos que tiene el cambio en la línea de mirada (o la torsión del ojo) sobre las aberraciones, así como las potenciales diferencias que se puede generar sobre las aberraciones cuando los sujetos observan con visión monocular o binocular, o evaluar si en el ojo existe una longitud de onda “preferida” para enfocar estímulos policromáticos.  
+			Abstract  
+			Addressing the important dynamic characteristics of the eye, a number of experiments were performed to study some of these dynamic properties, in order to provide new information about the visual system. To carry out these experiments, three instruments were designed and implemented, all of them based on the Hartmann-Shack sensor (HS) principle, but each one with particular characteristics: high time resolution HS sensor, wide field HS sensor and HS sensor with invisible illumination. Specific conditions that can affect the dynamics of the eye were addressed with these instruments, for example the possible effects arising from changes in the line of sight (gaze) on the aberrations, or the potential differences that can be generated on aberrations when subjects are under monocular or binocular vision, or evaluate if is there a “preferential” wavelength the eye uses to focus polychromatic stimuli.</description>
+                  <source>TDR (Tesis Doctorales en Red)</source>
+                  <relevantdate schemename="" classname="" schemeid="" classid=""/>
+                  <embargoenddate/>
+                  <storagedate/>
+                  <fulltext/>
+                  <resourcetype schemename="" classname="" schemeid="" classid=""/>
+                  <device/>
+                  <size/>
+                  <format/>
+                  <version/>
+                  <lastmetadataupdate/>
+                  <metadataversionnumber/>
+                  <originalId>oai:digitum.um.es:10201/19869</originalId>
+                  <originalId>oai:www.tdx.cat:10803/10849</originalId>
+                  <collectedfrom id="opendoar____::d296c101daa88a51f6ca8cfc1ac79b50"
+                                 name="Tesis Doctorals en Xarxa"/>
+                  <collectedfrom id="opendoar____::5eac43aceba42c8757b54003a58277b5"
+                                 name="Depósito de la Universidad de Murcia"/>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:digitum.um.es:10201/19869</pid>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:www.tdx.cat:10803/10849</pid>
+                  <bestlicense schemename="dnet:access_modes" classname="Open Access"
+                               schemeid="dnet:access_modes"
+                               classid="OPEN"/>
+                  <datainfo>
+                     <inferred>true</inferred>
+                     <deletedbyinference>false</deletedbyinference>
+                     <trust>0.9</trust>
+                     <inferenceprovenance>dedup</inferenceprovenance>
+                     <provenanceaction schemename="dnet:provenanceActions" classname="sysimport:crosswalk:repository"
+                                       schemeid="dnet:provenanceActions"
+                                       classid="sysimport:crosswalk:repository"/>
+                  </datainfo>
+		                <rels>
+		                   <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:entityToRoot)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::15d3c797ffa82b9943f58fbffa9864e1</to>
+		                      <ranking>1</ranking>
+                        <fullname>Mira Agudelo, Alejandro</fullname>
+		                   </rel>
+		                </rels>
+		                <children>
+			                  <result objidentifier="od_______296::4db31f3aae14d5b09f9abd9e6b94a5e6">
+				                    <title schemename="dnet:dataCite_title" classname="main title"
+                               schemeid="dnet:dataCite_title"
+                               classid="main title">Estudio de Fenómenos Dinámicos de la Óptica del Ojo Humano</title>
+                        <dateofacceptance>2011-01-14</dateofacceptance>
+                        <publisher>Universidad de Murcia</publisher>
+                        <resulttype schemename="dnet:result_typologies" classname="publication"
+                                    schemeid="dnet:result_typologies"
+                                    classid="publication"/>
+			                  </result>
+                     <result objidentifier="od______1245::2aa066b7cef6627aba1fc54ef475519f">
+				                    <title schemename="dnet:dataCite_title" classname="main title"
+                               schemeid="dnet:dataCite_title"
+                               classid="main title">Estudio de fenómenos dinámicos de la óptica del ojo humano</title>
+                        <dateofacceptance>2011-01-14</dateofacceptance>
+                        <publisher>Universidad de Murcia</publisher>
+                        <resulttype schemename="dnet:result_typologies" classname="publication"
+                                    schemeid="dnet:result_typologies"
+                                    classid="publication"/>
+			                  </result>
+                     <instance id="opendoar____::d296c101daa88a51f6ca8cfc1ac79b50">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Doctoral thesis"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0006"/>
+                        <hostedby id="opendoar____::d296c101daa88a51f6ca8cfc1ac79b50"
+                                  name="Tesis Doctorals en Xarxa"/>
+				                    <webresource>
+				                       <url>http://hdl.handle.net/10803/10849</url>
+				                    </webresource>
+
+			                  </instance>
+			                  <instance id="opendoar____::5eac43aceba42c8757b54003a58277b5">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource" classname="Doctoral thesis"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0006"/>
+                        <hostedby id="opendoar____::5eac43aceba42c8757b54003a58277b5"
+                                  name="Depósito de la Universidad de Murcia"/>
+				                    <webresource>
+				                       <url>http://hdl.handle.net/10201/19869</url>
+				                    </webresource>
+
+			                  </instance>
+
+		                </children>
+		             </oaf:result>
+
+            </oaf:entity>
+         </metadata>
+      </result>
+							<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:dri="http://www.driver-repository.eu/namespace/dri"
+              xmlns:oaf="http://namespace.openaire.eu/oaf">
+         <header>
+            <dri:objIdentifier>od_______165::09fb743300110d55693dcd62ceaa5535</dri:objIdentifier>
+            <dri:dateOfCollection>2014-06-14T21:26:13Z</dri:dateOfCollection>
+            <counters>
+	              <counter_authorship value="3"/>
+	           </counters>
+         </header>
+         <metadata>
+            <oaf:entity xsi:schemaLocation="http://namespace.openaire.eu/oaf https://www.openaire.eu/schema/0.2/oaf-0.2.xsd">
+		             <oaf:result>
+			               <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">[INFO:EIAH] Computer Science/Technology for Human Learning</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">[INFO:EIAH] Informatique/Environnements Informatiques pour l'Apprentissage Humain</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">mobile learning</subject>
+                  <subject schemename="dnet:result_subject" classname="keyword"
+                           schemeid="dnet:result_subject"
+                           classid="keyword">theory of learning</subject>
+                  <title schemename="dnet:dataCite_title" classname="main title"
+                         schemeid="dnet:dataCite_title"
+                         classid="main title">A Theory of Learning for the Mobile Age</title>
+                  <dateofacceptance>2006-01-01</dateofacceptance>
+                  <resulttype schemename="dnet:result_typologies" classname="publication"
+                              schemeid="dnet:result_typologies"
+                              classid="publication"/>
+                  <language schemename="dnet:languages" classname="English" schemeid="dnet:languages"
+                            classid="eng"/>
+                  <description>Our aim is to propose a theory of learning for a mobile society. It encompasses both learning supported by mobile devices such as cellular (mobile) phones, portable computers and personal audio players, and also learning in an era characterised by mobility of people and knowledge where the technology may be embedded in fixed objects such as 'walk up and use' information terminals. For brevity we shall refer to these together as mobile learning.</description>
+                  <source>The Sage Handbook of Elearning Research</source>
+                  <relevantdate schemename="" classname="" schemeid="" classid=""/>
+                  <publisher/>
+                  <embargoenddate/>
+                  <storagedate/>
+                  <fulltext/>
+                  <resourcetype schemename="" classname="" schemeid="" classid=""/>
+                  <device/>
+                  <size/>
+                  <format/>
+                  <version/>
+                  <lastmetadataupdate/>
+                  <metadataversionnumber/>
+                  <originalId>oai:telearn.archives-ouvertes.fr:hal-00190276</originalId>
+                  <collectedfrom id="opendoar____::9766527f2b5d3e95d4a733fcfb77bd7e"
+                                 name="INRIA a CCSD electronic archive server"/>
+                  <pid schemename="dnet:pid_types" classname="oai" schemeid="dnet:pid_types"
+                       classid="oai">oai:telearn.archives-ouvertes.fr:hal-00190276</pid>
+                  <bestlicense schemename="dnet:access_modes" classname="Open Access"
+                               schemeid="dnet:access_modes"
+                               classid="OPEN"/>
+                  <datainfo>
+                     <inferred>false</inferred>
+                     <deletedbyinference>false</deletedbyinference>
+                     <trust>0.9</trust>
+                     <inferenceprovenance/>
+                     <provenanceaction schemename="dnet:provenanceActions" classname="sysimport:crosswalk:repository"
+                                       schemeid="dnet:provenanceActions"
+                                       classid="sysimport:crosswalk:repository"/>
+                  </datainfo>
+		                <rels>
+		                   <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:rootToEntity)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::0d2df84825e383514fdcf5d3a701cd3f</to>
+		                      <ranking>2</ranking>
+                        <fullname>Taylor, Josie</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:rootToEntity)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::be205b92f5a5933cc1404c990c80a9f4</to>
+		                      <ranking>3</ranking>
+                        <fullname>Vavoula, Giasemi</fullname>
+		                   </rel>
+                     <rel provenanceaction="sysimport:crosswalk:repository" trust="0.9"
+                          inferenceprovenance="dedup (BuildRoots p:rootToEntity)"
+                          inferred="true">
+		                      <to scheme="dnet:personroles" class="hasAuthor" type="person">dedup_wf_001::05e6bb7b77228b1c31b1437bf4dde7c3</to>
+		                      <ranking>1</ranking>
+                        <fullname>Sharples, Mike</fullname>
+		                   </rel>
+		                </rels>
+		                <children>
+			                  <instance id="opendoar____::9766527f2b5d3e95d4a733fcfb77bd7e">
+			                     <licence schemename="dnet:access_modes" classname="Open Access"
+                                 schemeid="dnet:access_modes"
+                                 classid="OPEN"/>
+                        <instancetype schemename="dnet:publication_resource"
+                                      classname="Part of book or chapter of book"
+                                      schemeid="dnet:publication_resource"
+                                      classid="0013"/>
+                        <hostedby id="opendoar____::9766527f2b5d3e95d4a733fcfb77bd7e"
+                                  name="INRIA a CCSD electronic archive server"/>
+				                    <webresource>
+				                       <url>http://telearn.archives-ouvertes.fr/hal-00190276</url>
+				                    </webresource>
+				                    <webresource>
+				                       <url>http://telearn.archives-ouvertes.fr/docs/00/19/02/76/PDF/Sharples_et_al_Theory_of_Mobile_Learning_preprint.pdf</url>
+				                    </webresource>
+
+			                  </instance>
+
+		                </children>
+		             </oaf:result>
+
+            </oaf:entity>
+         </metadata>
+      </result>
+						</results>
+	  <browseResults>
+			</browseResults>
+</response>

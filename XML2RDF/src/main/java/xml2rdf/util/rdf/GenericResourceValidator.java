@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
@@ -20,7 +21,7 @@ public class GenericResourceValidator {
 	public enum ResourceType { ElementType, AttributeType, TextType, NoneType}
 	
 	public boolean IsAttribute(String attribute) {
-		return attribute.indexOf('@') == 0;
+		return attribute.indexOf('@') == 0 && attribute.length() >= 2;
 	}
 	
 	public ResourceType PredicateTypeFromXPath(String predicateXPath) {
@@ -33,14 +34,30 @@ public class GenericResourceValidator {
 		return ResourceType.NoneType;
 	}
 	
+	public boolean IsAcquireValue(String referencePredicateAttribute, String targetAttribute) {
+		String tempStr = referencePredicateAttribute.replaceAll(" ", "");		
+		if(targetAttribute.toLowerCase().equals("value") && tempStr.toLowerCase().equals("value()")) {
+			return true;
+		}
+		return false;
+	}
+	
 	/**
 	 * Check "@attributePara" equals to "attributePara";
 	 * @param referencePredicateAttribute
-	 * @param targetAttribute
+	 * @param targetAttribute as local name.
 	 * @return
 	 */
 	public boolean IsAttributeInGivenStatement(String referencePredicateAttribute, String targetAttribute) {		
-		return referencePredicateAttribute.substring(1).equals(targetAttribute);
+		if(targetAttribute.length() >0) {
+			// System.out.println("referenceAttr:" + referencePredicateAttribute + " , targetAttr:" + targetAttribute);
+			if(targetAttribute.indexOf('#') ==0 || targetAttribute.indexOf('@') ==0  ) {
+				return referencePredicateAttribute.substring(1).toLowerCase().equals(targetAttribute.substring(1).toLowerCase());
+			} else {
+				return referencePredicateAttribute.substring(1).toLowerCase().equals(targetAttribute);
+			}
+		} 
+		return false;
 	}
 	
 	/**
@@ -49,8 +66,9 @@ public class GenericResourceValidator {
 	 * @param referenceXPath
 	 * @param targetXPath
 	 * @return
+	 * @throws XPathExpressionException 
 	 */
-	public boolean InSubject(String referenceXPath, String targetXPath) {
+	public boolean InSubject(String referenceXPath, String targetXPath) throws XPathExpressionException {
 		if(targetXPath.isEmpty()) {
 			return false;
 		}
@@ -101,10 +119,10 @@ public class GenericResourceValidator {
 		}
 		
 		XPath xPath = XPathFactory.newInstance().newXPath();
+		XPathExpression xPathExpr = xPath.compile(referenceXPath);
 		NodeList nodes = null;
 		try {
-			nodes = (NodeList) xPath.evaluate(referenceXPath,
-			        doc.getDocumentElement(), XPathConstants.NODESET);
+			nodes = (NodeList) xPathExpr.evaluate(doc.getDocumentElement(), XPathConstants.NODESET);
 		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

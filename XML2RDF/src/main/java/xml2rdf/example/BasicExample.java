@@ -5,7 +5,7 @@ public class BasicExample {
 
 	public static void main(String[] args) {
 		GenericTransformer trans = new GenericTransformer();
-		trans.transform("STELL-I_3.rtml","STELL-I_3.rdf");
+		trans.transform("Sahrrah.xml","Sahrrah.rdf");
 	}
 
 }
