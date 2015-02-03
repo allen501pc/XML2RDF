@@ -31,6 +31,7 @@ You can use the donwloaded jar file to develop the program whath you want.
 ***Basic Example***
 
 You can import *xml2rdf.util.transformer.GenericTransformer* class to transform XML into generic RDF file.
+
 	// Create the transformation object. 
 	GenericTransformer trans = new GenericTransformer();
 	// Make a transformation procedure. The source file's name: "STELL-I_3.rtml" ; the generated file name: "STELL-I_3.rdf" 

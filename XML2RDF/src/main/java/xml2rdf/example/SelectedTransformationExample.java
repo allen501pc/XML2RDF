@@ -1,11 +1,18 @@
 package xml2rdf.example;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.util.ArrayList;
 
 import xml2rdf.util.transformer.SelectedTransformer;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.util.FileManager;
 
 public class SelectedTransformationExample {
 
@@ -36,6 +43,7 @@ public class SelectedTransformationExample {
 			System.out.println(myStatement.getSubject() + "," + myStatement.getPredicate().getLocalName() + "," + myStatement.getObject());
 		}
 		System.out.println("----------End of printing self-defined format.-----------------");
+		
 		
 	}
 
