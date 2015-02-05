@@ -55,7 +55,8 @@ The following code was appeared at xml2rdf.example.SelectedTransformationExample
 	// In this case, subject is "/response/results/result" and "@classname" indicates the attribute name:"classname" 
 	myTransformer.addTemplate("/response/results/result", "@classname");
 	myTransformer.addTemplate("/response/header/size", "value()");
-		
+	// Use parallel mode. 
+	myTransformer.SetParallelMode(true);
 	Model model = myTransformer.DoSelect();
 	System.out.println("-----------Print out TURTLE format.-----------------");
 	model.write(System.out,"TURTLE","http://www.example.com");	
@@ -708,6 +709,23 @@ The output should be like:
 	#response/header/size,value,10
 	----------End of printing self-defined format.-----------------
 
+##Experimental Results
+In the *SelectedTransformationExample* example, we tested *sequential processing mode* and *parallel mode*. Here *parallel mode* means that the process will generate a number of threads in order to process different user-defined rules (by XPath). We just test the *doSelect()* method's performance. The environment and results are listed below:
+
+**Envrionment**
+
+CPU: Intel Core i5-2450M
+
+Memory: 8GB
+
+OS: Windows 7 Pro.
+
+**Results**
+
+(Seqential Mode.) Time: 12440.0 msec.  Memory Usage: 348 MB
+
+(Parallel Mode.) Time: 4586.45 msec.  Memory Usage: 572 MB
+
 
 ##Get source cdoe
 Use Git tool to make following command:
@@ -715,7 +733,7 @@ Use Git tool to make following command:
 
 ##Known bugs
 1. While using *xml2rdf.util.transformer.SelectedTransformer*:
-Because the **Generic RDF** sometimes generated RDF which resources' URIs are specified as "#resources....", the [Jena](https://jena.apache.org) library we used can not write file in "RDF/XML" format. It seems like a bug for Jena in  this *Generic RDF*. We recommend you use "N-Triple" or "TURTLE" as basic output format for RDF. 
+Because the **Generic RDF** sometimes generated RDF which resources' URIs are specified as "#resources....", the [Jena](https://jena.apache.org)  library we used can not write file in "RDF/XML" format. It seems like a bug for Jena in  this *Generic RDF*. We recommend you use "N-Triple" or "TURTLE" as basic output format for RDF. 
 
 ##Dependency:
 If you want to develop it 

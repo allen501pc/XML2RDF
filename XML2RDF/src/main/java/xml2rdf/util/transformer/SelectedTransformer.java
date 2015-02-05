@@ -19,28 +19,55 @@ import com.hp.hpl.jena.rdf.model.impl.RDFDefaultErrorHandler;
 import com.hp.hpl.jena.util.FileManager;
 //import com.hp.hpl.jena.query.*;
 
-public class SelectedTransformer {
-	Model model = ModelFactory.createDefaultModel();
+public class SelectedTransformer{
+	protected Model model = ModelFactory.createDefaultModel();
 	protected Model outputModel = ModelFactory.createDefaultModel();
+	protected boolean modelsHaveBeenSet = false;
+	private boolean useParallelMode = false;
+	protected String filePath = ""; 
 	// template for selecting desire subject's and predicate's conditions. 
 	protected HashMap<String, ArrayList<String>> template = new HashMap<String, ArrayList<String>>();
 	GenericResourceValidator validator = new GenericResourceValidator();
 	
+	public SelectedTransformer() {
+		
+	}	
+	
 	public SelectedTransformer(String filePath) {
 		  // use the FileManager to find the input file
-        InputStream in = FileManager.get().open(filePath);
-        if (in == null) {
-            throw new IllegalArgumentException( "File: " + filePath + " not found");
-        } 
-        // Do not show Warnning Message here.
-        RDFDefaultErrorHandler.silent =true;
-        // read the RDF/XML file        
-        model.read( in, "" );
-        outputModel.setNsPrefixes(model);
+		if(!modelsHaveBeenSet) {
+			this.filePath = filePath;
+	        InputStream in = FileManager.get().open(filePath);
+	        if (in == null) {
+	            throw new IllegalArgumentException( "File: " + filePath + " not found");
+	        } 
+	        // Do not show Warnning Message here.
+	        RDFDefaultErrorHandler.silent =true;
+	        // read the RDF/XML file        
+	        model.read( in, "" );
+	        outputModel.setNsPrefixes(model);
+	        modelsHaveBeenSet = true;
+		}        
 	}
 	
-	public Model getSelectedOutputModel() {
-		return this.outputModel;
+	public SelectedTransformer(Model sourceModel, Model outputModel) {
+		if(!modelsHaveBeenSet) {
+			this.model.add(sourceModel);
+			this.outputModel.add(outputModel);
+			modelsHaveBeenSet = true;
+		}
+	}
+	
+	public final boolean IsParallelMode() {
+		return useParallelMode;
+	}
+	
+	public final void SetParallelMode(boolean IsSet) {
+		useParallelMode = IsSet;
+	}
+	
+	public Model GetSelectedOutputModel() {
+		return outputModel;
 	}
 	
 	public void PrintOut() {
@@ -48,7 +75,7 @@ public class SelectedTransformer {
 		
 	}	
 	
-	public void addTemplate(String subjectXPath, String attribute) {
+	public void AddTemplate(String subjectXPath, String attribute) {
 		ArrayList<String> object = null;
 		if( (object = template.get(subjectXPath)) != null) {
 			object.add(attribute);
@@ -59,12 +86,38 @@ public class SelectedTransformer {
 		}
 	}
 	
-	public Model DoSelect() {
-		for(Entry<String,ArrayList<String>> object: template.entrySet()) {
-			for(String attribute: object.getValue())
-				outputModel.add(DoSelect(object.getKey(), attribute));
+	public final Model DoSelect() {
+		if(IsParallelMode()) {
+			ArrayList<SelectedTransformerThread> threadPool = new ArrayList<SelectedTransformerThread>();
+			int taskNumber = 1;
+			for(Entry<String,ArrayList<String>> object: template.entrySet()) {
+				for(String attribute: object.getValue()) {					
+					SelectedTransformerThread tempThread = new SelectedTransformerThread(this.model, this.outputModel);
+					threadPool.add(tempThread);
+					tempThread.start(taskNumber++, new ArrayList<Statement>(),object.getKey(), attribute);
+					// outputModel.add(DoSelect(object.getKey(), attribute));
+				}
+			}
+			boolean allTerminated = false;
+			while(!allTerminated) {
+				for(int i = 0; i < threadPool.size(); ++i) {
+					if(threadPool.get(i).IsTerminated() && threadPool.get(i).IsSuccessful()) {
+						outputModel.add(threadPool.get(i).GetResult());
+					}
+					if(i == 0) {
+						allTerminated = threadPool.get(i).IsTerminated();
+					} else {
+						allTerminated = allTerminated && threadPool.get(i).IsTerminated();
+					}
+				}				
+			}
+		} else {
+			for(Entry<String,ArrayList<String>> object: template.entrySet()) {
+				for(String attribute: object.getValue())
+					outputModel.add(DoSelect(object.getKey(), attribute));
+			}
 		}
-		return getSelectedOutputModel();
+		return GetSelectedOutputModel();
 	}
 	
 	public ArrayList<Statement> DoSelect(String subjectXPath, String attribute) {
@@ -104,5 +157,5 @@ public class SelectedTransformer {
             result.add(iter.nextStatement());
         }
         return result;
-	}	
+	}
 }
