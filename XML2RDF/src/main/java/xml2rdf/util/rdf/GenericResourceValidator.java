@@ -46,7 +46,7 @@ public class GenericResourceValidator {
 	 * Check "@attributePara" equals to "attributePara";
 	 * @param referencePredicateAttribute
 	 * @param targetAttribute as local name.
-	 * @return
+	 * @return true for success.
 	 */
 	public boolean IsAttributeInGivenStatement(String referencePredicateAttribute, String targetAttribute) {		
 		if(targetAttribute.length() >0) {
@@ -65,7 +65,7 @@ public class GenericResourceValidator {
 	 * target path: "response/results/result_2/header", this method should return true.  
 	 * @param referenceXPath
 	 * @param targetXPath
-	 * @return
+	 * @return true for success.
 	 * @throws XPathExpressionException 
 	 */
 	public boolean InSubject(String referenceXPath, String targetXPath) throws XPathExpressionException {

@@ -1,1 +1,8 @@
+xml2rdf.command
+xml2rdf.configuration
+xml2rdf.example
+xml2rdf.util.database
+xml2rdf.util.rdf
+xml2rdf.util.semantic.similarity
 xml2rdf.util.transformer
+xml2rdf.util.xmlbuilder

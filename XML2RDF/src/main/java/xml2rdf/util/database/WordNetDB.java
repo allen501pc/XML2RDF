@@ -86,7 +86,7 @@ public class WordNetDB {
 	
 	/**
 	 * Get roots of synset.
-	 * @return
+	 * @return ArrayList<ISynsetID>, get the roots of WordNetDB
 	 */
 	public ArrayList<ISynsetID> getSynsetRoots() {
 		return this.roots;
