@@ -1,0 +1,821 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>XML2RDF by allen501pc</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">XML2RDF</h1>
+        <p class="header">A  transformation tool for XML to RDF using semantic ways.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/allen501pc/XML2RDF/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/allen501pc/XML2RDF/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/allen501pc/XML2RDF">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/allen501pc">allen501pc</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="xml2rdf" class="anchor" href="#xml2rdf" aria-hidden="true"><span class="octicon octicon-link"></span></a>XML2RDF</h1>
+
+<p>Description: A  transformation tool for XML to RDF with semantic ways.</p>
+
+<h5>
+<a id="author-jayun-yao-huang-allen" class="anchor" href="#author-jayun-yao-huang-allen" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author: Jayun-Yao Huang (Allen)</h5>
+
+<h5>
+<a id="email-allen501pcgmailcom" class="anchor" href="#email-allen501pcgmailcom" aria-hidden="true"><span class="octicon octicon-link"></span></a>Email: <a href="mailto:allen501pc@gmail.com">allen501pc@gmail.com</a>
+</h5>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h4>
+<a id="1-edit-configuration" class="anchor" href="#1-edit-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Edit configuration</h4>
+
+<p>1.1 copy <em>xml2rdf3.xsl</em> </p>
+
+<p>1.2 copy <em>default.conf</em> file and edit it as below:</p>
+
+<pre><code># Set a transformation file's path.
+transformation.file = xml2rdf3.xsl
+</code></pre>
+
+<h4>
+<a id="2-usage" class="anchor" href="#2-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Usage</h4>
+
+<h5>
+<a id="21-command" class="anchor" href="#21-command" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1 Command</h5>
+
+<p><strong>2.1.1.</strong> If you have installed JRE(Java Runtime Envrionment), you can easily use our provided jar file (be usually named  <em>XML2RDF-xx-yy-zz-with-dependencies.jar</em>) with following command:</p>
+
+<pre><code># java -jar XML2RDF-xx-yy-zz-with-dependencies.jar -s STELL-I_3.rtml -o output.rdf
+# The transformation is completed. Please check the output file. 
+</code></pre>
+
+<p>Note that the <em>default.conf</em> and <em>xml2rdf3.xsl should be in the same directory location of *XML2RDF-xx-yy-zz-with-dependencies.jar</em>.  </p>
+
+<h5>
+<a id="22-libraries" class="anchor" href="#22-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2 Libraries</h5>
+
+<p><strong>2.2.1.</strong> Go to <em>target</em> directory and then download the JAR file named <em>XML2RDF-xx.yy.zz-with-dependencies.jar</em>, which included all dependent libraries. 
+You can use the donwloaded jar file to develop the program whath you want. </p>
+
+<p><strong>2.2.2. Examples</strong></p>
+
+<p><strong><em>Basic Example</em></strong></p>
+
+<p>You can import <em>xml2rdf.util.transformer.GenericTransformer</em> class to transform XML into generic RDF file.</p>
+
+<pre><code>// Create the transformation object. 
+GenericTransformer trans = new GenericTransformer();
+// Make a transformation procedure. The source file's name: "STELL-I_3.rtml" ; the generated file name: "STELL-I_3.rdf" 
+trans.transform("STELL-I_3.rtml","STELL-I_3.rdf"); 
+</code></pre>
+
+<p><strong><em>Advanced usage</em></strong> </p>
+
+<p>You can use <em>xml2rdf.util.transformer.SelectedTransformer</em> to convert the <strong>Generic RDF</strong> file to another RDF base on what XPath you specify.</p>
+
+<p>The following code was appeared at xml2rdf.example.SelectedTransformationExample class. Assume that <em>Example.rdf</em> is the <strong>generic RDF</strong> file. </p>
+
+<pre><code>SelectedTransformer myTransformer = new SelectedTransformer("Example.rdf");
+
+/**
+ * For creating user-defined RDF resources, add templates which should define "Subject" and "Predicate". Note that the remaining part we don't indicate is "Object". 
+ */
+
+// Find XML tags which should be formulated as XPath '//size' elements for Subject and use the elements' contexts as Predicate.
+myTransformer.addTemplate("//size", "value()");
+// Find XML tags which should be formulated as XPath elements for Subject and use the elements' attribute name as Predicate.
+// In this case, subject is "/response/results/result" and "@classname" indicates the attribute name:"classname" 
+myTransformer.addTemplate("/response/results/result", "@classname");
+myTransformer.addTemplate("/response/header/size", "value()");
+// Use parallel mode. 
+myTransformer.SetParallelMode(true);
+Model model = myTransformer.DoSelect();
+System.out.println("-----------Print out TURTLE format.-----------------");
+model.write(System.out,"TURTLE","http://www.example.com");  
+System.out.println("-----------End of printing TURTLE format--------------------");
+/**
+ * Or output the selected triples
+ */
+System.out.println("-----------Print out self-defined format.-----------------");
+ArrayList&lt;Statement&gt; retrievedStatements=myTransformer.DoSelect("/response/header/size", "value()");
+for(Statement myStatement: retrievedStatements) {
+    System.out.println(myStatement.getSubject() + "," + myStatement.getPredicate().getLocalName() + "," + myStatement.getObject());
+}
+System.out.println("----------End of printing self-defined format.-----------------");
+</code></pre>
+
+<p>The output should be like:</p>
+
+<pre><code>-----------Print out TURTLE format.-----------------
+@prefix :        &lt;http://www.openaire.org/#&gt; .
+@prefix rdf:     &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix oaf:     &lt;http://namespace.openaire.eu/oaf#&gt; .
+@prefix dri:     &lt;http://www.driver-repository.eu/namespace/dri#&gt; .
+@prefix xs:      &lt;http://www.w3.org/TR/2008/REC-xml-20081126#&gt; .
+@prefix xsi:     &lt;http://www.w3.org/2001/XMLSchema-instance#&gt; .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/children/instance_2/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_4/metadata/oaf:entity/oaf:result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/datainfo/provenanceaction&gt;
+      :classname "sysimport:crosswalk:repository" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/subject_4&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/subject_4&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/children/result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/children/instance/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/subject&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/children/instance/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/resourcetype&gt;
+      :classname "" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/datainfo/provenanceaction&gt;
+      :classname "sysimport:crosswalk:repository" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/pid_3&gt;
+      :classname "oai" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/children/instance/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/subject&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/subject_4&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/language&gt;
+      :classname "English" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/children/result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/subject_3&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/datainfo/provenanceaction&gt;
+      :classname "sysimport:crosswalk:repository" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_8&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/resourcetype&gt;
+      :classname "" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/datainfo/provenanceaction&gt;
+      :classname "sysimport:crosswalk:repository" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/pid&gt;
+      :classname "doi" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/subject_3&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/children/result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/datainfo/provenanceaction&gt;
+      :classname "sysimport:crosswalk:repository" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/bestlicense&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/children/instance/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/children/result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/children/result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/subject_2&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/subject_3&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_7&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/children/instance/instancetype&gt;
+      :classname "Article" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/subject_3&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/children/instance/instancetype&gt;
+      :classname "Conference object" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/subject_6&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/subject_6&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/children/instance/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/children/result_2/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_4/metadata/oaf:entity/oaf:result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_4/metadata/oaf:entity/oaf:result/bestlicense&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/subject_6&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/resourcetype&gt;
+      :classname "" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/children/instance/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/children/result_2/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/pid&gt;
+      :classname "oai" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/datainfo/provenanceaction&gt;
+      :classname "sysimport:crosswalk:repository" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/children/instance_2/instancetype&gt;
+      :classname "Article" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_6&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/subject_5&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/children/instance_2/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/subject_5&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/children/instance_2/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_4/metadata/oaf:entity/oaf:result/children/instance/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/bestlicense&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/pid_2&gt;
+      :classname "oai" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/subject_5&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/children/instance_2/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/resourcetype&gt;
+      :classname "" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/children/instance_2/instancetype&gt;
+      :classname "Research" .
+
+&lt;#response/results/result_4/metadata/oaf:entity/oaf:result/children/instance/instancetype&gt;
+      :classname "Report" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/children/instance/instancetype&gt;
+      :classname "Research" .
+
+&lt;#response/results/result_4/metadata/oaf:entity/oaf:result/pid&gt;
+      :classname "oai" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_5&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_14&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/subject_8&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/pid_4&gt;
+      :classname "doi" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/subject_8&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/children/instance_2/instancetype&gt;
+      :classname "Doctoral thesis" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/pid&gt;
+      :classname "oai" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/relevantdate&gt;
+      :classname "" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/subject_8&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/language&gt;
+      :classname "English" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/bestlicense&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/relevantdate&gt;
+      :classname "" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/pid&gt;
+      :classname "oai" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/subject_8&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_15&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/subject_7&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/subject_7&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/subject_7&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/pid_3&gt;
+      :classname "oai" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/language&gt;
+      :classname "English" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/datainfo/provenanceaction&gt;
+      :classname "sysimport:crosswalk:repository" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/pid_3&gt;
+      :classname "oai" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/children/result_2/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/children/result_2/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/datainfo/provenanceaction&gt;
+      :classname "sysimport:crosswalk:repository" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/subject_7&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/pid_2&gt;
+      :classname "oai" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/pid&gt;
+      :classname "oai" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/bestlicense&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/children/result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/children/result_2/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/relevantdate&gt;
+      :classname "" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/subject_2&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/language&gt;
+      :classname "English" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/bestlicense&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/relevantdate&gt;
+      :classname "" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/children/instance/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/subject&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/resourcetype&gt;
+      :classname "" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/children/instance/instancetype&gt;
+      :classname "Conference object" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/children/result_2/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/subject&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/resourcetype&gt;
+      :classname "" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_9&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/subject&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/subject_4&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/children/instance_2/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_10&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/subject_4&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/relevantdate&gt;
+      :classname "" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/children/result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/children/instance/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/children/result_2/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/relevantdate&gt;
+      :classname "" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/subject_3&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_11&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/subject_3&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_4/metadata/oaf:entity/oaf:result/language&gt;
+      :classname "Swedish" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/language&gt;
+      :classname "English" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/bestlicense&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_4/metadata/oaf:entity/oaf:result/subject&gt;
+      :classname "" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/children/instance/instancetype&gt;
+      :classname "Doctoral thesis" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/children/instance/instancetype&gt;
+      :classname "Article" .
+
+&lt;#response/results/result_4/metadata/oaf:entity/oaf:result/relevantdate&gt;
+      :classname "" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/subject_6&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/pid&gt;
+      :classname "oai" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_12&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/pid_2&gt;
+      :classname "doi" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/subject_10&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/subject&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/relevantdate&gt;
+      :classname "" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/subject_6&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/children/result_2/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/subject_5&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_13&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/children/result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/subject_5&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/datainfo/provenanceaction&gt;
+      :classname "sysimport:crosswalk:repository" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/pid_2&gt;
+      :classname "oai" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/language&gt;
+      :classname "English" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_4&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/language&gt;
+      :classname "Spanish; Castilian" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/resourcetype&gt;
+      :classname "" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/pid_3&gt;
+      :classname "doi" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/subject&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/subject_8&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/language&gt;
+      :classname "English" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/children/result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_3&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/children/instance_2/instancetype&gt;
+      :classname "Article" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/relevantdate&gt;
+      :classname "" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/pid&gt;
+      :classname "pmc" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/pid_2&gt;
+      :classname "oai" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/subject_7&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/bestlicense&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/rels/rel/contracttype&gt;
+      :classname "Collaborative project" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/bestlicense&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/resourcetype&gt;
+      :classname "" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/children/result_2/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/subject_2&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/subject_2&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/subject_2&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/subject_2&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_8/metadata/oaf:entity/oaf:result/language&gt;
+      :classname "English" .
+
+&lt;#response/results/result_4/metadata/oaf:entity/oaf:result/datainfo/provenanceaction&gt;
+      :classname "sysimport:crosswalk:repository" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result_9/metadata/oaf:entity/oaf:result/subject&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/pid&gt;
+      :classname "pmc" .
+
+&lt;#response/results/result_6/metadata/oaf:entity/oaf:result/subject_2&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/subject_2&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_4/metadata/oaf:entity/oaf:result/resourcetype&gt;
+      :classname "" .
+
+&lt;#response/results/result_5/metadata/oaf:entity/oaf:result/children/result/title&gt;
+      :classname "main title" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/children/instance_2/instancetype&gt;
+      :classname "Article" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/resourcetype&gt;
+      :classname "" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/children/instance/instancetype&gt;
+      :classname "Article" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/children/instance/instancetype&gt;
+      :classname "Part of book or chapter of book" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/pid_2&gt;
+      :classname "oai" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/children/result_2/resulttype&gt;
+      :classname "publication" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/bestlicense&gt;
+      :classname "Open Access" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/pid&gt;
+      :classname "oai" .
+
+&lt;#response/results/result_3/metadata/oaf:entity/oaf:result/children/instance/licence&gt;
+      :classname "Open Access" .
+
+&lt;#response/header/size&gt;
+      rdf:value "10" .
+
+&lt;#response/results/result/metadata/oaf:entity/oaf:result/subject_9&gt;
+      :classname "keyword" .
+
+&lt;#response/results/result_2/metadata/oaf:entity/oaf:result/children/instance/instancetype&gt;
+      :classname "Article" .
+
+&lt;#response/results/result_7/metadata/oaf:entity/oaf:result/relevantdate&gt;
+      :classname "" .
+
+&lt;#response/results/result_10/metadata/oaf:entity/oaf:result/subject_4&gt;
+      :classname "keyword" .
+-----------End of printing TURTLE format--------------------
+-----------Print out self-defined format.-----------------
+#response/header/size,value,10
+----------End of printing self-defined format.-----------------
+</code></pre>
+
+<h2>
+<a id="experimental-results" class="anchor" href="#experimental-results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Experimental Results</h2>
+
+<p>In the <em>SelectedTransformationExample</em> example, we tested <em>sequential processing mode</em> and <em>parallel mode</em>. Here <em>parallel mode</em> means that the process will generate a number of threads in order to process different user-defined rules (by XPath). We just test the <em>doSelect()</em> method's performance. The environment and results are listed below:</p>
+
+<p><strong>Envrionment</strong></p>
+
+<p>CPU: Intel Core i5-2450M</p>
+
+<p>Memory: 8GB</p>
+
+<p>OS: Windows 7 Pro.</p>
+
+<p><strong>Results</strong></p>
+
+<p>(Seqential Mode.) Time: 12440.0 msec.  Memory Usage: 348 MB</p>
+
+<p>(Parallel Mode.) Time: 4586.45 msec.  Memory Usage: 572 MB</p>
+
+<h2>
+<a id="get-source-cdoe" class="anchor" href="#get-source-cdoe" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get source cdoe</h2>
+
+<p>Use Git tool to make following command:
+<code>git clone https://github.com/allen501pc/XML2RDF.git</code></p>
+
+<h2>
+<a id="known-bugs" class="anchor" href="#known-bugs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Known bugs</h2>
+
+<ol>
+<li>While using <em>xml2rdf.util.transformer.SelectedTransformer</em>:
+Because the <strong>Generic RDF</strong> sometimes generated RDF which resources' URIs are specified as "#resources....", the <a href="https://jena.apache.org">Jena</a>  library we used can not write file in "RDF/XML" format. It seems like a bug for Jena in  this <em>Generic RDF</em>. We recommend you use "N-Triple" or "TURTLE" as basic output format for RDF. </li>
+</ol>
+
+<h2>
+<a id="dependency" class="anchor" href="#dependency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependency:</h2>
+
+<p>If you want to develop it 
+Please use <a href="http://maven.apache.org/users/index.html">Maven</a> tool and manipulate the following dependent libraries. </p>
+
+<ul>
+<li>commons-cli 1.2</li>
+<li>commons-configuration: 1.10</li>
+<li>commons-lang 2.6commons-logging: 1.1.1</li>
+<li>junit: 3.8.1</li>
+<li>serializer: 2.7.2</li>
+<li>xalan: 2.7.2</li>
+<li>xml-apis: 1.3.04</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
