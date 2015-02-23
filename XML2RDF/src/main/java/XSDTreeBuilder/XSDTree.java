@@ -216,6 +216,20 @@ public class XSDTree {
 				}
 			}
 		}
+		
+		ResolveBrokenParentLinks();
+	}
+	
+	private void ResolveBrokenParentLinks() {
+		ResursiveResolveBrokenParentLinks(null, this.rootNode);
+	}
+	
+	private void ResursiveResolveBrokenParentLinks(AbstractXSDTreeNode myParent, AbstractXSDTreeNode currentNode) {
+		currentNode.SetParent(myParent);
+		ArrayList<AbstractXSDTreeNode> childrenList = currentNode.GetChildren();
+		for(AbstractXSDTreeNode myNode: childrenList) {
+			ResursiveResolveBrokenParentLinks(currentNode,myNode);
+		}
 	}
 	
 	private void ResursivePrint(AbstractXSDTreeNode currentNode, int rescursiveRunds) {

@@ -150,4 +150,9 @@ public abstract class AbstractXSDTreeNode implements IXSDTreeNode, Cloneable {
 		return result;
 	}
 
+	public void SetParent(AbstractXSDTreeNode myParent) {
+		this.parent = myParent;
+		
+	}
+
 }
