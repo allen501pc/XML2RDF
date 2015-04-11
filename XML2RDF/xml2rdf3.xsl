@@ -43,7 +43,8 @@
        </xsl:template>
 
        <!-- Turn XML elements into RDF triples. -->
-       <xsl:template match="*">
+	   <xsl:template match="*">
+	  <!-- <xsl:template match="/dblp/article/journal"> -->
               <xsl:param name="subjectname"/>
 
               <!-- Build URI for subjects resources from acestors elements -->
@@ -78,6 +79,7 @@
 
               <!-- rdf:_no triple to preserve the order of elements, 
                    comment out if not needed -->
+			  <!--
               <xsl:if test="count(../*) >1">
                      <xsl:element name="{concat('rdf:_',count(preceding-sibling::*)+1)}">
                             <rdf:Description>
@@ -86,7 +88,7 @@
                                    </xsl:attribute>
                             </rdf:Description>
                      </xsl:element>
-              </xsl:if>
+              </xsl:if> -->
        </xsl:template>
 
        <!-- Create attribute triples. -->

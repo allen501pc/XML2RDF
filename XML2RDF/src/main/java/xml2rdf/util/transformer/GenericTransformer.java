@@ -25,9 +25,12 @@ public class GenericTransformer {
 	 * @return true for success, otherwise false. 
 	 */
 	public boolean transform(String sourceURI, String targetURI) { 
-		trans.LoadSouceFileFromURI(sourceURI);
-		trans.SetOutputFileURI(targetURI);
 		trans.LoadXSLTFileFromURI(Settings.GetXSLTFileURI());
+		trans.SetOutputFileURI(targetURI);
+		trans.LoadSouceFileFromURI(sourceURI);
+		/*trans.LoadSouceFileFromURI(sourceURI);
+		trans.SetOutputFileURI(targetURI);
+		trans.LoadXSLTFileFromURI(Settings.GetXSLTFileURI()); */
 		return trans.DoTransformation();
 	}
 }
