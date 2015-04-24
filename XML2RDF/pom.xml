@@ -4,7 +4,7 @@
 
   <groupId>XML2RDF</groupId>
   <artifactId>XML2RDF</artifactId>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
   <packaging>jar</packaging>
 
   <name>XML2RDF</name>

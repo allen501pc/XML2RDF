@@ -22,7 +22,7 @@ public class SelectedTransformationExample {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		long SumTime = 0;
 		Model model = null;
-		int runTimes = 10;
+		int runTimes = 1;
 		for(int i = 0; i < runTimes; ++i) {
 			long startTime = System.currentTimeMillis();
 			
@@ -51,12 +51,12 @@ public class SelectedTransformationExample {
 			// Find XML tags which should be formulated as XPath elements for Subject and use the elements' attribute name as Predicate.
 			// In this case, subject is "/response/results/result" and "@classname" indicates the attribute name:"classname" 
 			//myTransformer.AddTemplate("/response/results/result", "@classname");
-			
-			myTransformer.AddTemplate("//publisher", "value()");
-			myTransformer.AddTemplate("//journal", "value()");
-			myTransformer.AddTemplate("//title", "value()");
-			myTransformer.AddTemplate("//originalId", "value()");
-			myTransformer.AddTemplate("//dateofacceptance", "value()");
+			//myTransformer.AddTemplate("//publisher", "value()");
+			//myTransformer.AddTemplate("//journal", "value()");
+			//myTransformer.AddTemplate("//title", "value()");
+			myTransformer.AddTemplate("//title", "@classname");
+			//myTransformer.AddTemplate("//originalId", "value()");
+			//myTransformer.AddTemplate("//dateofacceptance", "value()");
 			//myTransformer.AddTemplate("//citations/citation/rawText", "value()");
 			//myTransformer.AddTemplate("//result/header/dri:objIdentifier", "value()");
 			//myTransformer.AddTemplate("/response/header/page", "value()");

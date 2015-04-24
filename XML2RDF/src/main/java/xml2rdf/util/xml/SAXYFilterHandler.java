@@ -211,6 +211,8 @@ public class SAXYFilterHandler extends DefaultHandler {
 			if(currentFilter.IsAccept()) {				
 				// output the stream.
 				Resource myResource = model.createResource(rootResourceNamespace + "#" + exportOutputXPath().substring(1));
+				// TODO: Create RDF Resource type.
+				myResource.addProperty(model.createProperty("type"), model.createResource("http://RTML.com/#myResource"));
 				if(resourceStack.size() != 0) {
 					String propertyLabelName = "";
 					
@@ -256,6 +258,9 @@ public class SAXYFilterHandler extends DefaultHandler {
 		} else {
 			try {
 				Resource myResource = model.createResource(rootResourceNamespace + "#" + exportOutputXPath().substring(1));
+				
+				// TODO: Create RDF Resource type.
+				myResource.addProperty(model.createProperty("type"), model.createResource("http://RTML.com/#myResource"));
 				if(resourceStack.size() != 0) {
 					resourceStack.peek().addProperty(model.createProperty(rootResourceNamespace + "#",qName), myResource);
 				}
