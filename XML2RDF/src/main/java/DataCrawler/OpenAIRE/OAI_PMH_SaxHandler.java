@@ -19,7 +19,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class OAI_PMH_SaxHandler extends DefaultHandler {
 	
-	public boolean isFirstPage = true, enterConsumptionElement = false ;
+	public boolean isFirstPage = true, enterConsumptionElement = false, shouldOutputContent = false ;
 	public static String NextURL = "";
 	public static long currentRuns = 0;
 	public static long maxRuns = 10; 
@@ -28,7 +28,7 @@ public class OAI_PMH_SaxHandler extends DefaultHandler {
 	public static String[] ElementNamesOfFirstPage = {"oai:OAI-PMH", "oai:responseDate", "oai:request", "oai:ListRecords"};
 	public static boolean[] shouldOutputInTheEndOfDocuments = {true, false, false, true};
 	public static Stack<String> endElements = new Stack<String>();
-	public static SAXParserFactory factory ;
+	public static SAXParserFactory factory ;	
 	
 	public void setAsFirstPage(boolean isFirst) {
 		isFirstPage = isFirst;
@@ -76,17 +76,19 @@ public class OAI_PMH_SaxHandler extends DefaultHandler {
 	
 	public void startElement(String uri, String localName,
             String qName, Attributes attributes) {
+		shouldOutputContent = false;
 		if(qName.equals(consumptionTag)) {
 			// Enter conSumption tag.
 			enterConsumptionElement = true;			    
 		} else {
 			if(isFirstPage) {
 				try {
+					shouldOutputContent = true;
 					outputStream.write("<" + qName );
 					for(int i = 0; i < attributes.getLength(); ++i) {
 						String myQName = attributes.getQName(i);
 						String myAttributeValue = attributes.getValue(i);
-						outputStream.write( " " + myQName + "=\"" + myAttributeValue + "\"");					 
+						outputStream.write( " " + myQName + "=\"" + StringEscapeUtils.escapeXml(myAttributeValue) + "\"");					 
 					}
 					outputStream.write(">" + System.lineSeparator());
 					outputStream.flush();
@@ -103,11 +105,12 @@ public class OAI_PMH_SaxHandler extends DefaultHandler {
 				}
 				if(!hasElementsOfFirstPage) {
 					try {
+						shouldOutputContent = true;
 						outputStream.write("<" + qName );
 						for(int i = 0; i < attributes.getLength(); ++i) {
 							String myQName = attributes.getQName(i);
 							String myAttributeValue = attributes.getValue(i);
-							outputStream.write( " " + myQName + "=\"" + myAttributeValue + "\"");					 
+							outputStream.write( " " + myQName + "=\"" + StringEscapeUtils.escapeXml(myAttributeValue) + "\"");					 
 						}
 						outputStream.write(">" + System.lineSeparator());
 						outputStream.flush();
@@ -123,12 +126,21 @@ public class OAI_PMH_SaxHandler extends DefaultHandler {
             String qName) {		
 		if(!qName.equals(consumptionTag)) {
 			if(isFirstPage) {
-				try {
-					outputStream.write("</" + qName + ">" + System.lineSeparator() );					
-					outputStream.flush();
-				} catch (IOException e) {					
-					e.printStackTrace();
-				}						
+				boolean hasElementsOfFirstPage = false;
+				for(int i = 0; i < ElementNamesOfFirstPage.length; ++i) {
+					if(qName.equals(ElementNamesOfFirstPage[i]) && shouldOutputInTheEndOfDocuments[i] ) {
+						hasElementsOfFirstPage = true;
+						break;
+					}
+				}
+				if(!hasElementsOfFirstPage) {
+					try {
+						outputStream.write("</" + qName + ">" + System.lineSeparator() );					
+						outputStream.flush();
+					} catch (IOException e) {					
+						e.printStackTrace();
+					}
+				}
 			} else {
 				boolean hasElementsOfFirstPage = false;
 				for(int i = 0; i < ElementNamesOfFirstPage.length; ++i) {
@@ -162,8 +174,10 @@ public class OAI_PMH_SaxHandler extends DefaultHandler {
 					NextURL = myURL.GenerateURL();	
     	} else {
     		try {
-				outputStream.write(value);
-				outputStream.flush();
+    			if(shouldOutputContent) {
+					outputStream.write(value);
+					outputStream.flush();
+    			}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
