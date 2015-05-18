@@ -29,6 +29,7 @@ public class OAI_PMH_SaxHandler extends DefaultHandler {
 	public static boolean[] shouldOutputInTheEndOfDocuments = {true, false, false, true};
 	public static Stack<String> endElements = new Stack<String>();
 	public static SAXParserFactory factory ;	
+	public static boolean isReady = true;
 	
 	public void setAsFirstPage(boolean isFirst) {
 		isFirstPage = isFirst;
@@ -47,6 +48,7 @@ public class OAI_PMH_SaxHandler extends DefaultHandler {
 		if(maxRuns > 0 && currentRuns > maxRuns) {
 			throw new SAXException("end of runs:" + maxRuns);
 		}
+		isReady = false;
 		if(isFirstPage) {
 			try {
 				outputStream = new FileWriter(outputFilePath, true);
@@ -72,6 +74,7 @@ public class OAI_PMH_SaxHandler extends DefaultHandler {
 				System.out.println("Cannot close output data: " + e.getMessage());
 			}
 		} */
+		isReady = true;
 	}
 	
 	public void startElement(String uri, String localName,
@@ -162,7 +165,7 @@ public class OAI_PMH_SaxHandler extends DefaultHandler {
 	}
 	
 	public void characters(char ch[], int start, int length) throws SAXException {
-    	String value = StringEscapeUtils.escapeXml(new String(ch, start, length).trim()); 
+    	String value = new String(ch, start, length).trim(); 
     	if(value.isEmpty()) {
     		return;
     	}
@@ -175,7 +178,7 @@ public class OAI_PMH_SaxHandler extends DefaultHandler {
     	} else {
     		try {
     			if(shouldOutputContent) {
-					outputStream.write(value);
+					outputStream.write(StringEscapeUtils.escapeXml(value));
 					outputStream.flush();
     			}
 			} catch (IOException e) {

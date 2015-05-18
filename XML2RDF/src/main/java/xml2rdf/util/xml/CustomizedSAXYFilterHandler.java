@@ -1,11 +1,12 @@
 package xml2rdf.util.xml;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -14,6 +15,7 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.mutable.MutableInt;
 import org.apache.commons.lang.mutable.MutableObject;
 import org.xml.sax.Attributes;
@@ -30,14 +32,11 @@ import xml2rdf.util.rdf.SPOComponent;
 import xml2rdf.util.rdf.TemplateRDF;
 
 public class CustomizedSAXYFilterHandler extends DefaultHandler {
-	
-	// public YFilter currentFilter = null;
-	// static GenericResourceValidator validator = new GenericResourceValidator();
-	// public String outputStream = new String();
-	// protected Map<String, MutableInt> elementCountsTable = new HashMap<String, MutableInt>();
+		
 	public Model model = ModelFactory.createDefaultModel();
-	protected TemplateRDF mainTemplateRDF = null;  
 	public Resource rootResource = null;
+	protected TemplateRDF mainTemplateRDF = null;  
+	
 	protected LinkedList<MutableObject> delayAddingDataList = new LinkedList<MutableObject>();
 	// public Stack<Resource> resourceStack = new Stack<Resource>();
 	
@@ -48,6 +47,18 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
 	// Use automatic namespace mapping.
 	public boolean useAutomaticNamespaceMapping = false;
 	
+	protected boolean useRDFStore = true;
+	protected PrintWriter output = null;
+	
+	public void useRDFMemoryStore(boolean turnOn) {
+		useRDFStore = turnOn;
+	}
+	
+	public void setOutputStream(PrintWriter printer) {
+		output = printer;
+	}
+	
+	protected String outputSubject = "", outputPredicate = "", outputObject = ""; 
 	/**
 	 * Xpath List. Record current xpaht elements.
 	 */
@@ -63,31 +74,7 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
 			}
 			return result;
 		}
-	};
-	
-	/**
-	 * Xpath List. Record current xpaht elements.
-	 */
-	/*
-	protected List<String> outputXPathList = new ArrayList<String>() {
-		
-		private static final long serialVersionUID = 1L;
-		
-		@Override 
-		public String toString() {
-			String result = "";
-			for( int i = 0; i < this.size(); ++i ) {
-				result += "/" + this.get(i);			
-			}
-			return result;
-		}
-	};
-	*/
-	
-	
-	/**
-	 * 
-	 */		
+	};	
 	
 	
 	public CustomizedSAXYFilterHandler() { 
@@ -101,18 +88,21 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
 	public String exportCurrentXPath() {
 		return this.currentXPathList.toString();
 	}
-	
-	/*
-	public String exportOutputXPath() {
-		return this.outputXPathList.toString();
-	}
-	*/
+		
+	public void exportCurrentResult(List<String> result) {
+		Iterator<String> it = result.iterator();
+		while(it.hasNext()) {
+			output.print(it.next());			
+		}
+	}	
 	
 	public void startDocument() throws SAXException {	
-		try {			
+		try {				
 			isFirstElement = true;
-			// Create Empty Resource.
-			rootResource = model.createResource(rootResourceNamespace);				
+			// Create Empty Resource.		
+			if(useRDFStore) {
+				rootResource = model.createResource(rootResourceNamespace);		
+			}
 			// resourceStack.push(rootResource);
 			// Prepare to store static pattern.
 			if(mainTemplateRDF != null) {
@@ -120,7 +110,11 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
 					if(!comp.metaData.subjectPattern.isXPath &&
 					   !comp.metaData.objectPattern.isXPath
 					) {
-						mainTemplateRDF.GenerateModelFromSPOComponent(model, comp);
+						if(useRDFStore) {
+							mainTemplateRDF.GenerateModelFromSPOComponent(model, comp);
+						} else {
+							exportCurrentResult(mainTemplateRDF.getTriples(comp));
+						}
 					}
 				}
 			}
@@ -135,7 +129,6 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
 		} catch (Exception e) {
 			System.out.println("ERROR:" + e.getMessage());
 		}
-		
 	}
 	
 	/**
@@ -187,40 +180,72 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
 			for(SPOComponent comp: this.mainTemplateRDF.currentMaintainedList) {
 				// subject pattern.
 				if(comp.metaData.subjectPattern.isXPath) {
-					if(comp.metaData.subjectPattern.attributeName.isEmpty()) {
-						if(comp.metaData.subjectPattern.xpath.equals(exportCurrentXPath())) {
-							// Delay adding  because the value should be retrieved from its' content.						
-							MutableObject dalayAddingData = new MutableObject();
-							comp.data.subjectList.add(dalayAddingData);
-							this.delayAddingDataList.add(dalayAddingData);
-						}
-					} else {
-						// Get the attribute value
+					// Check the condition matched or not.  
+					boolean hasConditionAttributes = !comp.metaData.subjectPattern.conditionAttributeName.isEmpty();
+					boolean isMatched = false;
+					if(hasConditionAttributes) {						
 						for(int i = 0; i < attributes.getLength(); ++i) {
-							String myQName = attributes.getQName(i);
-							//String myAttributeValue = attributes.getValue(i);
-							if(myQName.equals(comp.metaData.subjectPattern.attributeName)) {
-								comp.data.subjectList.add(new MutableObject(attributes.getValue(i)));
+							if(attributes.getQName(i).equals(comp.metaData.subjectPattern.conditionAttributeName) &&
+									attributes.getValue(i).equals(comp.metaData.subjectPattern.conditionAttributeValue)) {
+								isMatched = true;
+								break;
+							}
+						}
+					}
+					if( isMatched || !hasConditionAttributes ) {
+						if(comp.metaData.subjectPattern.attributeName.isEmpty()) {
+							if(comp.metaData.subjectPattern.xpath.equals(exportCurrentXPath())) {
+								// Delay adding  because the value should be retrieved from its' content.						
+								MutableObject dalayAddingData = new MutableObject();
+								comp.data.subjectList.add(dalayAddingData);
+								this.delayAddingDataList.add(dalayAddingData);
+							}
+						} else {
+							// Get the attribute value
+							if(comp.metaData.subjectPattern.xpath.equals(exportCurrentXPath())) {
+								for(int i = 0; i < attributes.getLength(); ++i) {
+									String myQName = attributes.getQName(i);
+									//String myAttributeValue = attributes.getValue(i);
+									if(myQName.equals(comp.metaData.subjectPattern.attributeName)) {
+										comp.data.subjectList.add(new MutableObject(attributes.getValue(i)));
+									}
+								}
 							}
 						}
 					}
 				}
 				// Object pattern
 				if(comp.metaData.objectPattern.isXPath) {
-					if(comp.metaData.objectPattern.attributeName.isEmpty()) {						
-						// Delay adding  because the value should be retrieved from its' content.
-						if(comp.metaData.objectPattern.xpath.equals(exportCurrentXPath())) {
-							MutableObject dalayAddingData = new MutableObject();
-							comp.data.objectList.add(dalayAddingData);
-							this.delayAddingDataList.add(dalayAddingData);
-						}
-					} else {
-						// Get the attribute value
+					
+					boolean hasConditionAttributes = !comp.metaData.objectPattern.conditionAttributeName.isEmpty();
+					boolean isMatched = false;
+					if(hasConditionAttributes) {						
 						for(int i = 0; i < attributes.getLength(); ++i) {
-							String myQName = attributes.getQName(i);
-							//String myAttributeValue = attributes.getValue(i);
-							if(myQName.equals(comp.metaData.objectPattern.attributeName)) {
-								comp.data.objectList.add(new MutableObject(attributes.getValue(i)));
+							if(attributes.getQName(i).equals(comp.metaData.objectPattern.conditionAttributeName) &&
+									attributes.getValue(i).equals(comp.metaData.objectPattern.conditionAttributeValue)) {
+								isMatched = true;
+								break;
+							}
+						}
+					}
+					if(isMatched || !hasConditionAttributes ) {
+						if(comp.metaData.objectPattern.attributeName.isEmpty()) {						
+							// Delay adding  because the value should be retrieved from its' content.
+							if(comp.metaData.objectPattern.xpath.equals(exportCurrentXPath())) {
+								MutableObject dalayAddingData = new MutableObject();
+								comp.data.objectList.add(dalayAddingData);
+								this.delayAddingDataList.add(dalayAddingData);
+							}
+						} else {
+							// Get the attribute value
+							if(comp.metaData.objectPattern.xpath.equals(exportCurrentXPath())) {
+								for(int i = 0; i < attributes.getLength(); ++i) {
+									String myQName = attributes.getQName(i);
+									//String myAttributeValue = attributes.getValue(i);
+									if(myQName.equals(comp.metaData.objectPattern.attributeName)) {
+										comp.data.objectList.add(new MutableObject(attributes.getValue(i)));
+									}
+								}
 							}
 						}
 					}
@@ -236,7 +261,12 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
 			while(iter.hasNext()) {
 				SPOComponent comp = iter.next();
 				if(comp.metaData.SLCAPath.equals(exportCurrentXPath())) {
-					this.mainTemplateRDF.GenerateModelFromSPOComponent(model,comp);
+					
+					if(useRDFStore) {
+						this.mainTemplateRDF.GenerateModelFromSPOComponent(model,comp);
+					} else {
+						exportCurrentResult(this.mainTemplateRDF.getTriples(comp));
+					}
 					comp.resetData();
 					iter.remove();
 				}
@@ -274,6 +304,7 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
 		if(this.mainTemplateRDF.filter != null) {
 			this.mainTemplateRDF.filter.PopElement();						
 		}
+
 		/*
 		if(outputXPathList.size() > 0) {
 			outputXPathList.remove(outputXPathList.size() -1);
@@ -282,15 +313,14 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
 	}
 	
     public void characters(char ch[], int start, int length) throws SAXException {
-    	String value = new String(ch, start, length).trim();
+    	String value = StringEscapeUtils.escapeXml(new String(ch, start, length).trim());
     	try {
     		if(value.length()>0) {
     			// outputStream += "<rdf:value>" + value + "</rdf:value>" + System.lineSeparator();
     			ListIterator<MutableObject> listIterator = this.delayAddingDataList.listIterator();
     			while(listIterator.hasNext()) {
     				listIterator.next().setValue(value);
-    			}
-    			// this.delayAddingDataList.clear();    			
+    			}    			    			
     		}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -4,12 +4,15 @@ import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 
 public class TemplateResource implements Cloneable{
 	public boolean isXPath = false;
-	// public String identifier = "";
+ 
 	public String attributeName = "";
 	public String xpath = "";
 	public String outputIdentifier = "";
+	public NameSpaceMapping mapping = new NameSpaceMapping();
 	public boolean isLiteral = false;
-	// public enum TypeOfLiteral{ xsd_string, xsd_integer,xsd_date, xsd_float,none};
+	public String conditionAttributeName = "";
+	public String conditionAttributeValue = "";
+
 	public XSDDatatype literalType = null;
 	public static TemplateResource newInstance() {
 		return new TemplateResource();
@@ -26,6 +29,9 @@ public class TemplateResource implements Cloneable{
 		this.attributeName = res.attributeName;
 		this.xpath = res.xpath;
 		this.outputIdentifier = res.outputIdentifier;
+		this.mapping.copy(res.mapping);
+		this.conditionAttributeName = res.conditionAttributeName;
+		this.conditionAttributeValue = res.conditionAttributeValue;
 	}
 	
 	public Object clone() { 
@@ -35,6 +41,9 @@ public class TemplateResource implements Cloneable{
 		res.attributeName = this.attributeName;
 		res.xpath = this.xpath;
 		res.outputIdentifier = this.outputIdentifier;
+		res.mapping.copy(this.mapping);
+		res.conditionAttributeName = this.conditionAttributeName;
+		res.conditionAttributeValue = this.conditionAttributeValue;
 		return res;
 	}
 	

@@ -22,6 +22,34 @@ public class XPathUtils {
 		return xpath.indexOf("/") == 0;
 	}
 	
+	public static String[] getLastConditionAttributeRules(String xpath) {
+		String[] result = {};
+		int startIndex = xpath.lastIndexOf("[@");
+		int endIndex = xpath.lastIndexOf("]");
+		if(startIndex < 0 || endIndex < 0 ) {
+			return result;
+		}
+		String tempStr = xpath.substring(startIndex + 2, endIndex);
+		// TODO: Need to use regular expression.
+		if(tempStr.contains("/")) {
+			return result;
+		} else {
+			String[] split = tempStr.split("=");
+			if(split.length != 2) {				
+				return result;
+			} else {
+				if(split[0].isEmpty() || split[1].isEmpty()) {
+					return result;
+				} else {
+					String[] result2 = new String[2];
+					result2[0] = split[0];
+					result2[1] = split[1].replace("'", "");
+					return result2;
+				}
+			}
+		}
+	}
+	
 	public static boolean isXPathAttribute(String xpath) {
 		int index = xpath.lastIndexOf("/@");
 		if(index != -1) {
@@ -42,13 +70,22 @@ public class XPathUtils {
 		return false;
 	}
 	
+	protected static String getSkippedBracketsElements(String item) {
+		int index = item.indexOf("[");
+		if(index != -1) {
+			return item.substring(0,index);
+		}
+		return item;
+	}
+	
 	public static String getXPathWithOutTextNode(String xpath) {
 		String[] splitItems = xpath.split("/");
 		String result = "";
 		for( int i = 0; i < splitItems.length; ++i ) {
-			if(!splitItems[i].isEmpty()) {
-				if(splitItems[i].indexOf("text()") == -1) {
-					result += "/" + splitItems[i];
+			String item = getSkippedBracketsElements(splitItems[i]);
+			if(!item.isEmpty()) {
+				if(item.indexOf("text()") == -1) {
+					result += "/" + item;
 				} else {
 					break;
 				}
@@ -62,9 +99,10 @@ public class XPathUtils {
 		String[] splitItems = xpath.split("/");
 		String result = "";
 		for( int i = 0; i < splitItems.length; ++i ) {
-			if(!splitItems[i].isEmpty()) {
-				if(splitItems[i].indexOf("@") == -1 && splitItems[i].indexOf("text()") == -1) {
-					result += "/" + splitItems[i];
+			String item = getSkippedBracketsElements(splitItems[i]);
+			if(!item.isEmpty()) {
+				if(item.indexOf("@") == -1 && item.indexOf("text()") == -1) {
+					result += "/" + item;
 				} else {
 					break;
 				}

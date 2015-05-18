@@ -2,10 +2,13 @@ package xml2rdf.util.rdf;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.commons.lang.mutable.MutableObject;
 
@@ -28,23 +31,64 @@ public class TemplateRDF {
 	 * The List of SPO (i.e. subject, predicate and object) component.
 	 * @See SPOComponent
 	 */
-	public ArrayList<SPOComponent> spoCompList = new ArrayList<SPOComponent>(); 	
+	public ArrayList<SPOComponent> spoCompList = new ArrayList<SPOComponent>(); 
+	public HashSet<NameSpaceMapping> prefixSet = new HashSet<NameSpaceMapping>();
 	/**
 	 * Current SPO Component list, which is dynamically operated by Handler. 
 	 */
 	public List<SPOComponent> currentMaintainedList = new LinkedList<SPOComponent>();
+	protected String defaultNameSpace = "http://www.example.com/#";
 	
 	public YFilter filter = new YFilter();
 	
-	protected void assignMetaResource(TemplateResource res, String pattern, XSDDatatype type) {
+	public void setDefaultNameSpace(String url) {
+		defaultNameSpace = url;
+	}
+	
+	public String getDefaultNameSpace(String url) {
+		return defaultNameSpace;
+	}
+	
+	public boolean setNameSpaceMapping(MutableObject prefix, MutableObject URI) {
+		MutableObject prefixObject = new MutableObject(prefix);
+		if(prefixSet.contains(prefix)) {
+			Iterator<NameSpaceMapping> iterator = prefixSet.iterator();
+			while(iterator.hasNext()) {
+				NameSpaceMapping obj = iterator.next();
+				if(obj.hashCode() == prefixObject.hashCode()) {
+					obj.setPrefix((String) prefix.getValue(), (String) URI.getValue());
+					return true;
+				}
+			}
+		}
+		NameSpaceMapping obj = new NameSpaceMapping((String) prefix.getValue(),(String) URI.getValue());
+		return prefixSet.add(obj);		
+	}
+	
+	protected void assignMetaResource(TemplateResource res, NameSpaceMapping mapping, String pattern, XSDDatatype type) {
+		if(mapping != null && !mapping.isEmpty()) {
+			setNameSpaceMapping(mapping.prefixName,  mapping.URI);
+			res.mapping.copy(mapping);
+		}
+		
 		if(XPathUtils.isXPath(pattern)) {
 			res.isXPath = true;
 			if(XPathUtils.isXPathAttribute(pattern)) {
 				res.isLiteral = true;
 				res.attributeName = XPathUtils.getAttributeNameFromXPath(pattern);
+				String[] conditions = XPathUtils.getLastConditionAttributeRules(pattern);
+				if(conditions.length != 0) {
+					res.conditionAttributeName = conditions[0];
+					res.conditionAttributeValue = conditions[1];
+				}
 				res.xpath = XPathUtils.getXPathWithOutAttributeAndTextNode(pattern);
 			} else if(XPathUtils.isQueryingTextNodeFromElements(pattern)) {
 				res.isLiteral = false;
+				String[] conditions = XPathUtils.getLastConditionAttributeRules(pattern);
+				if(conditions.length != 0) {
+					res.conditionAttributeName = conditions[0];
+					res.conditionAttributeValue = conditions[1];
+				}
 				res.xpath = XPathUtils.getXPathWithOutAttributeAndTextNode(pattern);
 			}
 			
@@ -67,10 +111,14 @@ public class TemplateRDF {
 	 * @param object
 	 */
 	public void addTriplePattern(String subject,XSDDatatype subjectLiteral, String predicateString,XSDDatatype predicateLiteral, String object, XSDDatatype objectLiteral) {		
+		addTriplePattern(null, subject,subjectLiteral, null, predicateString,predicateLiteral, null, object,  objectLiteral);				
+	}	
+	
+	public void addTriplePattern(NameSpaceMapping prefixOfSubject,String subject,XSDDatatype subjectLiteral, NameSpaceMapping prefixOfPredicate, String predicateString,XSDDatatype predicateLiteral, NameSpaceMapping prefixOfObject, String object, XSDDatatype objectLiteral) {		
 		SPOComponent spoComp = new SPOComponent();
-		assignMetaResource(spoComp.metaData.subjectPattern, subject, subjectLiteral);
-		assignMetaResource(spoComp.metaData.predicatePattern, predicateString, predicateLiteral);
-		assignMetaResource(spoComp.metaData.objectPattern, object, objectLiteral);
+		assignMetaResource(spoComp.metaData.subjectPattern, prefixOfSubject, subject, subjectLiteral);
+		assignMetaResource(spoComp.metaData.predicatePattern, prefixOfPredicate, predicateString, predicateLiteral);
+		assignMetaResource(spoComp.metaData.objectPattern, prefixOfObject, object, objectLiteral);
 		// assume that predicate is not written in XPath way. 
 		// Set SLCA Path
 		if(spoComp.metaData.subjectPattern.isXPath) {
@@ -104,10 +152,10 @@ public class TemplateRDF {
 				this.filter.AppendXPath(spoComp.metaData.objectPattern.xpath);
 			}
 		}		
-	}		
+	}
+	
 	
 	public void GenerateModelFromSPOComponent(Model model,SPOComponent tempComp) {
-		//for(: currentMaintainedList) {
 		if(tempComp.data.subjectList.size() > 0) {
 			for(MutableObject subjectName : tempComp.data.subjectList) {
 				if(subjectName.getValue() == null || ((String) subjectName.getValue()).isEmpty())
@@ -132,7 +180,45 @@ public class TemplateRDF {
 				}
 			}
 		}
-			
-		//}
+	}
+	
+	protected String setOneOfNTriples(TemplateResource pattern, String outputObj) {
+		String tempResult = "";
+		if(!pattern.isLiteral && !pattern.mapping.isEmpty()) {
+			tempResult += "<" + pattern.mapping.URI + "/" + outputObj + "> ";
+		} else if(!pattern.isLiteral) {
+			tempResult += "<" + defaultNameSpace + "/" + outputObj + "> ";
+		} else {
+			tempResult += "\"" + outputObj + "\" ";
+		}
+		return tempResult;
+	}
+	
+	public List<String> getTriples(SPOComponent tempComp) {
+		List<String> result = new LinkedList<String>();
+		String subject = "", predicate = "", object = "";
+		if(tempComp.data.subjectList.size() > 0) {
+			for(MutableObject subjectName : tempComp.data.subjectList) {
+				if(subjectName.getValue() == null || ((String) subjectName.getValue()).isEmpty())
+					continue;
+				if(tempComp.data.objectList.size() > 0 ) {
+					for(MutableObject objectName : tempComp.data.objectList) {
+						if(objectName.getValue() == null || ((String) objectName.getValue()).isEmpty())
+							continue;
+						subject = ((String) subjectName.getValue());						
+						predicate = (String) tempComp.data.predicateName.getValue();
+						object = (String) objectName.getValue();
+						String tempResult = "";
+						tempResult += setOneOfNTriples(tempComp.metaData.subjectPattern, subject);
+						tempResult += setOneOfNTriples(tempComp.metaData.predicatePattern, predicate);
+						tempResult += setOneOfNTriples(tempComp.metaData.objectPattern, object);
+						tempResult += ".";
+						
+						result.add(tempResult + System.lineSeparator());			
+					}
+				}
+			}
+		}
+		return result;
 	}
 }
