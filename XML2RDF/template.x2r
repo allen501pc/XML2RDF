@@ -1,0 +1,15 @@
+defaultnamespace = http://example.com
+namespace oa = http://lod.openaire.eu/data
+namespace swpo = http://lod.openaire.eu/data
+namespace dcterms = http://dublincore.org/documents/dcmi-terms
+namespace foaf = http://xmlns.com/foaf/0.1
+namespace bibo = http://purl.org/ontology/bibo
+namespace bibtex = http://purl.org/net/nknouf/ns/bibtex
+
+oa,/record/result/header/dri:objIdentifier/text(), null,null,a,null,oa,publicaiton,null 
+oa,/record/result/header/dri:objIdentifier/text(), null, oa,title, null, null,/record/result/metadata/oaf:entity/oaf:result/title/text(), string
+oa,/record/result/header/dri:objIdentifier/text(), null, dcterms, dateAccepted, null, null, /record/result/metadata/oaf:entity/oaf:result/dateofacceptance/text(),string
+oa,/record/result/header/dri:objIdentifier/text(), null, dcterms, publisher, null, null,/record/result/metadata/oaf:entity/oaf:result/publisher/text(), string
+oa,/record/result/header/dri:objIdentifier/text(), null, dcterms, licenseType, null, null, /record/result/metadata/oaf:entity/oaf:result/bestlicense/@classname,string
+oa,/record/result/header/dri:objIdentifier/text(), null, oa,author, null, null,/record/result/metadata/oaf:entity/oaf:result/rels/rel/to[@type='person']/text(), null
+null,/record/result/metadata/oaf:entity/oaf:result/rels/rel/to[@type='person']/text(), null, oa,fullname, null, null,/record/result/metadata/oaf:entity/oaf:result/rels/rel/fullname/text(), string

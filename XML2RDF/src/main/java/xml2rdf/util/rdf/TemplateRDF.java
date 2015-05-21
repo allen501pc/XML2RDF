@@ -42,10 +42,10 @@ public class TemplateRDF {
 	public YFilter filter = new YFilter();
 	
 	public void setDefaultNameSpace(String url) {
-		defaultNameSpace = url;
+		defaultNameSpace = new String(url);
 	}
 	
-	public String getDefaultNameSpace(String url) {
+	public String getDefaultNameSpace() {
 		return defaultNameSpace;
 	}
 	
@@ -67,6 +67,10 @@ public class TemplateRDF {
 	
 	protected void assignMetaResource(TemplateResource res, NameSpaceMapping mapping, String pattern, XSDDatatype type) {
 		if(mapping != null && !mapping.isEmpty()) {
+			setNameSpaceMapping(mapping.prefixName,  mapping.URI);
+			res.mapping.copy(mapping);
+		} else if (mapping == null) {
+			mapping = new NameSpaceMapping("defaultNS",getDefaultNameSpace());
 			setNameSpaceMapping(mapping.prefixName,  mapping.URI);
 			res.mapping.copy(mapping);
 		}
@@ -101,7 +105,30 @@ public class TemplateRDF {
 			res.literalType = type;	
 			res.isLiteral = true;
 		}
-	}		
+	}	
+	
+	public void adddTriplePattern(List<ArrayList<Object>> list) {
+		Iterator<ArrayList<Object>> it = list.iterator();
+		while(it.hasNext()) {
+			addTriplePattern(it.next());
+		}		
+	}
+	
+	public void addTriplePattern(List<Object> list) {
+		if(list.size() != 9) {
+			return;
+		}
+		addTriplePattern((NameSpaceMapping) list.get(0), 
+						 (String) list.get(1),
+						 (XSDDatatype) list.get(2),
+						 (NameSpaceMapping) list.get(3), 
+						 (String) list.get(4),
+						 (XSDDatatype) list.get(5),
+						 (NameSpaceMapping) list.get(6), 
+						 (String) list.get(7),
+						 (XSDDatatype) list.get(8)
+				);
+	}
 	
 	/**
 	 * Add triple Pattern. Notice that we assume that users' subject and object "can be" in XPath way. 

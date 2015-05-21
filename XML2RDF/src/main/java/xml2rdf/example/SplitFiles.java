@@ -9,12 +9,13 @@ public class SplitFiles {
         }
         String fileName = args[0];
         int lineNumbers = Integer.parseInt(args[1]);
+        String directory = args[2];
 
         PrintWriter writer;
 		try {
 	        BufferedReader br = new BufferedReader(new InputStreamReader( new FileInputStream(fileName), "UTF-8"));
 	        int fileCount = 1;
-			writer = new PrintWriter(new FileOutputStream(fileName + "_" + fileCount, true));
+			writer = new PrintWriter(new FileOutputStream(directory + "/" + fileName + "_" + fileCount, true));
 			
 	        int count = 0;
 	        String text = "";
@@ -26,7 +27,7 @@ public class SplitFiles {
 			                count = 0;
 			                writer.close();
 			                fileCount++;
-			                writer = new PrintWriter(new FileOutputStream(fileName + "_" + fileCount, true));
+			                writer = new PrintWriter(new FileOutputStream(directory + "/" + fileName + "_" + fileCount, true));
 			        }
 			}
 			br.close();

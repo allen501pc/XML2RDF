@@ -28,6 +28,8 @@ import org.xml.sax.SAXException;
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.rdf.model.Model;
 
+import xml2rdf.util.rdf.AbstractTemplateParser;
+import xml2rdf.util.rdf.DefaultTemplateParser;
 import xml2rdf.util.rdf.NameSpaceMapping;
 import xml2rdf.util.rdf.TemplateRDF;
 import xml2rdf.util.xml.CustomizedSAXYFilterHandler;
@@ -41,7 +43,7 @@ public class CustomizedSaxYFilterExample3 {
 		
 		try {
 						
-			if(args.length < 5) {
+			if(args.length < 6) {
 				System.out.println("command JSON_file RDF_FILE log_file num_of_records useRDF_Store(1=true,0=false)");				
 				return;
 			}			
@@ -65,22 +67,27 @@ public class CustomizedSaxYFilterExample3 {
 					    handler.setOutputStream(new PrintWriter(args[1]));
 				    }
 				    
-				    NameSpaceMapping spaceOA = new NameSpaceMapping("oa", "http://lod.openaire.eu/data/");
-				    NameSpaceMapping spaceSwpo = new NameSpaceMapping("swpo","http://sw-portal.deri.org/ontologies/swportal/#");
-				    NameSpaceMapping spaceDcterms = new NameSpaceMapping("dcterms","http://dublincore.org/documents/dcmi-terms/#");
-				    NameSpaceMapping spaceFoaf = new NameSpaceMapping("foaf","http://xmlns.com/foaf/0.1/#");
-				    NameSpaceMapping spaceBibo = new NameSpaceMapping("bibo","http://purl.org/ontology/bibo/");
-				    NameSpaceMapping spaceBibtex = new NameSpaceMapping("bibtex","http://purl.org/net/nknouf/ns/bibtex#");
+				    AbstractTemplateParser parser = new DefaultTemplateParser();
+				    parser.Parse(new FileReader(args[5]));
+				    template.setDefaultNameSpace(parser.GetDefaultNameSpaceURI());
+				    template.adddTriplePattern(parser.constructionPatternList);
 				    
-				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, null,"a", null, spaceOA,"Publication", null);
-				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, spaceSwpo,"title", null, null,"/record/result/metadata/oaf:entity/oaf:result/title/text()", XSDDatatype.XSDstring);			    
-				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, spaceDcterms, "dateAccepted", null, null, "/record/result/metadata/oaf:entity/oaf:result/dateofacceptance/text()",XSDDatatype.XSDdate);
-				    
-				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, spaceDcterms, "publisher", null, null,"/record/result/metadata/oaf:entity/oaf:result/publisher/text()",XSDDatatype.XSDstring);
-				    
-				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, spaceDcterms,"dcterms:licenseType", null, null, "/record/result/metadata/oaf:entity/oaf:result/bestlicense/@classname",XSDDatatype.XSDstring);
-				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, spaceOA,"author", null, null,"/record/result/metadata/oaf:entity/oaf:result/rels/rel/to[@type='person']/text()", null);
-				    template.addTriplePattern(null,"/record/result/metadata/oaf:entity/oaf:result/rels/rel/to[@type='person']/text()", null, spaceOA,"fullname", null, null,"/record/result/metadata/oaf:entity/oaf:result/rels/rel/fullname/text()", XSDDatatype.XSDstring);
+//				    NameSpaceMapping spaceOA = new NameSpaceMapping("oa", "http://lod.openaire.eu/data/");
+//				    NameSpaceMapping spaceSwpo = new NameSpaceMapping("swpo","http://sw-portal.deri.org/ontologies/swportal/#");
+//				    NameSpaceMapping spaceDcterms = new NameSpaceMapping("dcterms","http://dublincore.org/documents/dcmi-terms/#");
+//				    NameSpaceMapping spaceFoaf = new NameSpaceMapping("foaf","http://xmlns.com/foaf/0.1/#");
+//				    NameSpaceMapping spaceBibo = new NameSpaceMapping("bibo","http://purl.org/ontology/bibo/");
+//				    NameSpaceMapping spaceBibtex = new NameSpaceMapping("bibtex","http://purl.org/net/nknouf/ns/bibtex#");
+//				    
+//				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, null,"a", null, spaceOA,"Publication", null);
+//				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, spaceSwpo,"title", null, null,"/record/result/metadata/oaf:entity/oaf:result/title/text()", XSDDatatype.XSDstring);			    
+//				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, spaceDcterms, "dateAccepted", null, null, "/record/result/metadata/oaf:entity/oaf:result/dateofacceptance/text()",XSDDatatype.XSDdate);
+//				    
+//				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, spaceDcterms, "publisher", null, null,"/record/result/metadata/oaf:entity/oaf:result/publisher/text()",XSDDatatype.XSDstring);
+//				    
+//				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, spaceDcterms,"dcterms:licenseType", null, null, "/record/result/metadata/oaf:entity/oaf:result/bestlicense/@classname",XSDDatatype.XSDstring);
+//				    template.addTriplePattern(spaceOA,"/record/result/header/dri:objIdentifier/text()", null, spaceOA,"author", null, null,"/record/result/metadata/oaf:entity/oaf:result/rels/rel/to[@type='person']/text()", null);
+//				    template.addTriplePattern(null,"/record/result/metadata/oaf:entity/oaf:result/rels/rel/to[@type='person']/text()", null, spaceOA,"fullname", null, null,"/record/result/metadata/oaf:entity/oaf:result/rels/rel/fullname/text()", XSDDatatype.XSDstring);
 				    // End of publications.xml. It's subject is related to :OpenAIREDataModel.
 				    handler.setTemplateRDF(template);	
 								    
