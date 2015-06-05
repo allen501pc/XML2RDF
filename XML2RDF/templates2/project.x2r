@@ -1,0 +1,37 @@
+defaultnamespace = http://example.com
+namespace oa = http://lod.openaire.eu/data
+namespace swpo = http://lod.openaire.eu/data
+namespace cerif = http://lod.openaire.eu/data
+namespace dcterms = http://dublincore.org/documents/dcmi-terms
+namespace foaf = http://xmlns.com/foaf/0.1
+namespace bibo = http://purl.org/ontology/bibo
+namespace bibtex = http://purl.org/net/nknouf/ns/bibtex
+
+# =============== start project ===============
+# project
+oa,/record/result/header/dri:objIdentifier/text(),null,null,a,null,null,project,null
+# websiteurl
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,websiteurl,null,oa,/record/result/metadata/oaf:entity/oaf:project/websiteurl/text(),string
+# code
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,code,null,oa,/record/result/metadata/oaf:entity/oaf:project/code/text(),string
+# acronym
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,acronym,null,oa,/record/result/metadata/oaf:entity/oaf:project/acronym/text(),string
+# title
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,title,null,oa,/record/result/metadata/oaf:entity/oaf:project/title/text(),string
+# startdate
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,startdate,null,oa,/record/result/metadata/oaf:entity/oaf:project/startdate/text(),string
+# enddate
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,enddate,null,oa,/record/result/metadata/oaf:entity/oaf:project/enddate/text(),string
+# callidentifier
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,callidentifier,null,oa,/record/result/metadata/oaf:entity/oaf:project/callidentifier/text(),string
+# keywords
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,keywords,null,oa,/record/result/metadata/oaf:entity/oaf:project/keywords/text(),string
+# duration
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,duration,null,oa,/record/result/metadata/oaf:entity/oaf:project/duration/text(),string
+# ecsc39
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,ecsc39,null,oa,/record/result/metadata/oaf:entity/oaf:project/ecsc39/text(),string
+# foundingtree
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,fundingtree,null,oa,/record/result/metadata/oaf:entity/oaf:project/fundingtree/text(),string
+# contracttype
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,contracttype,null,oa,/record/result/metadata/oaf:entity/oaf:project/contracttype/text(),string
+# ================================ End of mapping =====================

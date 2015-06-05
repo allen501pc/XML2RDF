@@ -1,0 +1,29 @@
+defaultnamespace = http://example.com
+namespace oa = http://lod.openaire.eu/data
+namespace swpo = http://lod.openaire.eu/data
+namespace cerif = http://lod.openaire.eu/data
+namespace dcterms = http://dublincore.org/documents/dcmi-terms
+namespace foaf = http://xmlns.com/foaf/0.1
+namespace bibo = http://purl.org/ontology/bibo
+namespace bibtex = http://purl.org/net/nknouf/ns/bibtex
+
+# ================= Person ===================
+# person
+oa,/record/result/header/dri:objIdentifier/text(),null,null,a,null,foaf,person,null
+# first name
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,firstname,null,oa,/record/result/metadata/oaf:entity/oaf:person/firstname/text(),string
+# last name
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,lastname,null,oa,/record/result/metadata/oaf:entity/oaf:person/secondnames/text(),string
+# full name
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,name,null,oa,/record/result/metadata/oaf:entity/oaf:person/fullname/text(),string
+# fax
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,faxNumber,null,oa,/record/result/metadata/oaf:entity/oaf:person/fax/text(),string
+# email
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,email,null,oa,/record/result/metadata/oaf:entity/oaf:person/email/text(),string
+# phone
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,phone,null,oa,/record/result/metadata/oaf:entity/oaf:person/phone/text(),string
+# nationality
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,nationality,null,oa,/record/result/metadata/oaf:entity/oaf:person/nationality/text(),string
+# is author of
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,isAuthorOf,null,oa,/record/result/metadata/oaf:entity/oaf:person/rels/rel/to[@class=isAuthorOf]/text(),string
+# =========== end of Person ===============

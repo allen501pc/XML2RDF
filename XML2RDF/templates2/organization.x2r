@@ -1,0 +1,45 @@
+defaultnamespace = http://example.com
+namespace oa = http://lod.openaire.eu/data
+namespace swpo = http://lod.openaire.eu/data
+namespace cerif = http://lod.openaire.eu/data
+namespace dcterms = http://dublincore.org/documents/dcmi-terms
+namespace foaf = http://xmlns.com/foaf/0.1
+namespace bibo = http://purl.org/ontology/bibo
+namespace bibtex = http://purl.org/net/nknouf/ns/bibtex
+
+# ========== Start for organization =============
+# organization type
+oa,/record/result/header/dri:objIdentifier/text(),null,null,a,null,oa,organization,null
+# legalshortname
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,legalshortname,null,oa,/record/result/metadata/oaf:entity/oaf:organization/legalshortname/text(),string
+# legalname
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,legalname,null,oa,/record/result/metadata/oaf:entity/oaf:organization/legalname/text(),string
+# websiteurl
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,websiteurl,null,oa,/record/result/metadata/oaf:entity/oaf:organization/websiteurl/text(),string
+# logourl
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,logourl,null,oa,/record/result/metadata/oaf:entity/oaf:organization/logourl/text(),string
+# eclegalbody
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,eclegalbody,null,oa,/record/result/metadata/oaf:entity/oaf:organization/eclegalbody/text(),string
+# eclegalperson
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,eclegalperson,null,oa,/record/result/metadata/oaf:entity/oaf:organization/eclegalperson/text(),string
+# ecnonprofit
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,ecnonprofit,null,oa,/record/result/metadata/oaf:entity/oaf:organization/ecnonprofit/text(),string
+# ecresearchorganization
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,ecresearchorganization,null,oa,/record/result/metadata/oaf:entity/oaf:organization/ecresearchorganization/text(),string
+# echighereducation
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,echighereducation,null,oa,/record/result/metadata/oaf:entity/oaf:organization/echighereducation/text(),string
+# ecinternationalorganizationeurinterests
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,ecinternationalorganizationeurinterests,null,oa,/record/result/metadata/oaf:entity/oaf:organization/ecinternationalorganizationeurinterests/text(),string
+# ecinternationalorganization
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,ecinternationalorganization,null,oa,/record/result/metadata/oaf:entity/oaf:organization/ecinternationalorganization/text(),string
+# ecenterprise
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,ecenterprise,null,oa,/record/result/metadata/oaf:entity/oaf:organization/ecenterprise/text(),string
+# ecsmevalidated
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,ecsmevalidated,null,oa,/record/result/metadata/oaf:entity/oaf:organization/ecsmevalidated/text(),string
+# ecnutscode
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,ecnutscode,null,oa,/record/result/metadata/oaf:entity/oaf:organization/ecnutscode/text(),string
+# country
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,country,null,oa,/record/result/metadata/oaf:entity/oaf:organization/country/@classname,string
+# has project
+oa,/record/result/header/dri:objIdentifier/text(),null,oa,hasproject,null,oa,/record/result/metadata/oaf:entity/oaf:organization/rels/rel/to[@type=project]/text(),string
+# ================= End of Organization =======================

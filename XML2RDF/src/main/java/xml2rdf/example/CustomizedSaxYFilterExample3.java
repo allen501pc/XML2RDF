@@ -44,12 +44,12 @@ public class CustomizedSaxYFilterExample3 {
 		try {
 						
 			if(args.length < 6) {
-				System.out.println("command JSON_file RDF_FILE log_file num_of_records useRDF_Store(1=true,0=false)");				
+				System.out.println("command sourceFolder RDF_FILE log_file num_of_records useRDF_Store(1=true,0=false)");				
 				return;
 			}			
 			
-			String sourceFileName = args[0];
-			
+			String sourceFolderName = args[0];
+			File sourceFolder = new File(sourceFolderName); 
 			PrintWriter logWriter = new PrintWriter(new FileOutputStream(args[2],false));
 			float sumOfMappingTime = 0, sumOfLoadingTime = 0, sumOfOutputRDFTime = 0; 		
 			int runTimes = 1;
@@ -95,78 +95,81 @@ public class CustomizedSaxYFilterExample3 {
 		    		// String filename = sourceFolderName + listOfFiles[index].getName();
 		    		// Do NOT use it because current files have been repaired. 
 		    	    // fixIncompleteTag(filename);
-		    				    		
-		    		BufferedReader reader = new BufferedReader(new FileReader(sourceFileName));
-		    		String text = "";
-				    String processingID = "";
-				    String fieldName = "";
-		    		while(true) {
-		    			long startTime = System.currentTimeMillis();
-		    			if((text = reader.readLine()) == null) {
-		    				break;
-		    			}
-		    			if(text.isEmpty()) 
-		    				continue;
-					    JsonFactory jfactory = new JsonFactory();
-					    JsonParser jParser = jfactory.createParser(text);
-					    jParser.nextToken();
-					    processingID = "";
-					    fieldName = "";
-					    while(jParser.nextToken()!= JsonToken.END_OBJECT ) {
-					    	fieldName = jParser.getCurrentName();							    	
-					    	
-					    	if(fieldName.equals("_id")) {
-					    		// Move to "{"
-					    		jParser.nextToken();
-					    		// Move to "$oid"
-					    		jParser.nextToken();
-					    		fieldName = jParser.getCurrentName();
-					    		if(fieldName.equals("$oid")) {
-					    			// Move to id which is like 5538bf46ecd280c77b28be0f
-					    			jParser.nextToken();
-					    			processingID = jParser.getText();
-						    		logWriter.write(processingID + " > start" + System.lineSeparator());
-						    		// Move to "}"
+				    File[] listOfFiles = sourceFolder.listFiles(); 
+				    for ( int idx = 0; idx < listOfFiles.length; ++idx) {
+				    	String filename = sourceFolderName + "/" + listOfFiles[idx].getName();
+			    		BufferedReader reader = new BufferedReader(new FileReader(filename));
+			    		String text = "";
+					    String processingID = "";
+					    String fieldName = "";
+			    		while(true) {
+			    			long startTime = System.currentTimeMillis();
+			    			if((text = reader.readLine()) == null) {
+			    				break;
+			    			}
+			    			if(text.isEmpty()) 
+			    				continue;
+						    JsonFactory jfactory = new JsonFactory();
+						    JsonParser jParser = jfactory.createParser(text);
+						    jParser.nextToken();
+						    processingID = "";
+						    fieldName = "";
+						    while(jParser.nextToken()!= JsonToken.END_OBJECT ) {
+						    	fieldName = jParser.getCurrentName();							    	
+						    	
+						    	if(fieldName.equals("_id")) {
+						    		// Move to "{"
 						    		jParser.nextToken();
-					    		}							    		
-					    	} else if(fieldName.equals("body")) {	
-					    		jParser.nextToken();
-					    		String xmlContent = jParser.getText().replace("&nbsp;", " ");
-							    saxParser.parse(new InputSource(new StringReader(xmlContent)), handler);
-							    long stopTime = System.currentTimeMillis();
-							    logWriter.write(processingID + " > OK" + System.lineSeparator());
-							    logWriter.flush();
-								long elapsedTime = stopTime - startTime;
-								sumOfMappingTime += (elapsedTime/1000.0f);
-								++numberOfFiles;
-								if(numberOfFiles%1000 == 0) {									
-									logWriter.write(numberOfFiles + " files. Time (in seconds) = " + sumOfMappingTime + System.lineSeparator());
-									logWriter.flush();
-									if(!args[3].equals("0")) {
-										if(numberOfFiles == Integer.valueOf(args[3])) {
-											break;
+						    		// Move to "$oid"
+						    		jParser.nextToken();
+						    		fieldName = jParser.getCurrentName();
+						    		if(fieldName.equals("$oid")) {
+						    			// Move to id which is like 5538bf46ecd280c77b28be0f
+						    			jParser.nextToken();
+						    			processingID = jParser.getText();
+							    		logWriter.write(processingID + " > start" + System.lineSeparator());
+							    		// Move to "}"
+							    		jParser.nextToken();
+						    		}							    		
+						    	} else if(fieldName.equals("body")) {	
+						    		jParser.nextToken();
+						    		String xmlContent = jParser.getText().replace("&nbsp;", " ");
+								    saxParser.parse(new InputSource(new StringReader(xmlContent)), handler);
+								    long stopTime = System.currentTimeMillis();
+								    logWriter.write(processingID + " > OK" + System.lineSeparator());
+								    logWriter.flush();
+									long elapsedTime = stopTime - startTime;
+									sumOfMappingTime += (elapsedTime/1000.0f);
+									++numberOfFiles;
+									if(numberOfFiles%1000 == 0) {									
+										logWriter.write(numberOfFiles + " files. Time (in seconds) = " + sumOfMappingTime + System.lineSeparator());
+										logWriter.flush();
+										if(!args[3].equals("0")) {
+											if(numberOfFiles == Integer.valueOf(args[3])) {
+												break;
+											}
 										}
 									}
-								}
-					    	} else {
-					    		jParser.nextToken();
-					    	}
-					    }
-		    		}
-
-				   
-				    //String filename = "I:/OpenAIRE/Generated_Data/publication/dedup_wf_001##00693436d87991865c806519efcad0f6.xml";
-				    
-				    //handler.model.write(new FileWriter("dblp_small_customized.rdf"), "RDF/XML-ABBREV");
-				    long startTime1 = System.currentTimeMillis();
-					if(useRDFStore) {
-						handler.model.write(new FileWriter(args[1],false), "N-TRIPLES");
-					}
-				    
-					long endTime1 = System.currentTimeMillis();
-					sumOfOutputRDFTime = (endTime1 - startTime1)/1000.0f;
-				    // System.out.println(SAXYFilterHandler.outputStream);
-					//TimeUnit.MILLISECONDS.sleep(2000);				
+						    	} else {
+						    		jParser.nextToken();
+						    	}
+						    }
+			    		}
+	
+					   
+					    
+					    
+					    //handler.model.write(new FileWriter("dblp_small_customized.rdf"), "RDF/XML-ABBREV");
+					    long startTime1 = System.currentTimeMillis();
+						if(useRDFStore) {
+							handler.model.write(new FileWriter(args[1],false), "N-TRIPLES");
+						}
+					    
+						long endTime1 = System.currentTimeMillis();
+						sumOfOutputRDFTime = (endTime1 - startTime1)/1000.0f;
+					    // System.out.println(SAXYFilterHandler.outputStream);
+						//TimeUnit.MILLISECONDS.sleep(2000);	
+				    }
 				}
 			System.out.println("============================================");
 			logWriter.write("============================================" + System.lineSeparator());

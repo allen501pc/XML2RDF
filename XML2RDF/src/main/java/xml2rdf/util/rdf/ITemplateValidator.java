@@ -18,6 +18,8 @@ interface ITemplateValidator {
 	
 	public boolean IsAcceptedNameSpacePrefix(String str);
 	
+	public boolean IsBlankNode(String ns);
+	
 	public boolean IsNull(String str);
 	
 	public Object GetDataType(String str);
@@ -27,5 +29,7 @@ interface ITemplateValidator {
 	public boolean IsAcceptedPredicatePattern(String ns, String ds, String ts);
 	
 	public boolean IsAcceptedObjectPattern(String ns, String ds, String ts);
+	
+	public boolean IsComment(String str);
 		
 }

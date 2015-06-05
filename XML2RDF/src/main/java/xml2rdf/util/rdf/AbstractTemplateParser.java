@@ -22,6 +22,9 @@ public abstract class AbstractTemplateParser implements ITemplateValidator, ITem
 	protected Set<NameSpaceMapping> acceptedPrefixURImapping = new HashSet<NameSpaceMapping>();
 	public List<ArrayList<Object>> constructionPatternList = new ArrayList<ArrayList<Object>>();
 	
+	AbstractTemplateParser() {
+		acceptedPrefixURImapping.add(new NameSpaceMapping("_","_:"));
+	}
 	@Override
 	public boolean IsSettingDefaultNameSpace(String str) {
 		String regex = "\\s*(defaultnamespace)\\s*[=]\\s*(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
@@ -102,7 +105,7 @@ public abstract class AbstractTemplateParser implements ITemplateValidator, ITem
 	 * @see xml2rdf.util.rdf.ITemplateParser#ParseByLine(java.lang.String)
 	 */
 	@Override
-	public boolean ParseByLine(String line) {
+	public boolean ParseByLine(String line) {		
 		if(this.IsSettingDefaultNameSpace(line)) {
 			this.SetDefaultNameSpace(line);
 			return true;
@@ -112,6 +115,8 @@ public abstract class AbstractTemplateParser implements ITemplateValidator, ITem
 		} else if (this.IsConstructingPattern(line)) {
 			boolean added  = constructionPatternList.add(this.GetConstructingPattern(line));
 			return added;
+		} else if (this.IsComment(line)) {
+			return true;
 		}
 		return false;
 	}
@@ -119,6 +124,14 @@ public abstract class AbstractTemplateParser implements ITemplateValidator, ITem
 	public boolean IsURI(String str) {
 		String regex = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";		
 		return str.matches(regex);
+	}
+	
+	
+	public boolean IsBlankNode(String ns) {
+		if(ns.equals("_")) {
+			return true;
+		}
+		return false;
 	}
 	
 	@Override
@@ -153,7 +166,7 @@ public abstract class AbstractTemplateParser implements ITemplateValidator, ITem
 					typePart = item;
 					switch (i) {
 						case 2:
-							if ( !IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {
+							if (!IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {
 								return false;
 							}
 							break;

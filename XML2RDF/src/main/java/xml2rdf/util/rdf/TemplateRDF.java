@@ -49,6 +49,18 @@ public class TemplateRDF {
 		return defaultNameSpace;
 	}
 	
+	public void clearData() {
+		if(this.currentMaintainedList.size() > 0) {
+			this.currentMaintainedList.clear();
+		}
+		if(this.spoCompList.size() > 0 ) {
+			Iterator<SPOComponent> it = this.spoCompList.iterator();
+			while(it.hasNext()) {
+				it.next().resetData();
+			}
+		}
+	}
+	
 	public boolean setNameSpaceMapping(MutableObject prefix, MutableObject URI) {
 		MutableObject prefixObject = new MutableObject(prefix);
 		if(prefixSet.contains(prefix)) {
@@ -210,11 +222,21 @@ public class TemplateRDF {
 	}
 	
 	protected String setOneOfNTriples(TemplateResource pattern, String outputObj) {
-		String tempResult = "";
+		String tempResult = "";		
 		if(!pattern.isLiteral && !pattern.mapping.isEmpty()) {
-			tempResult += "<" + pattern.mapping.URI + "/" + outputObj + "> ";
+			if(pattern.mapping.URI.getValue().equals("_:")) {
+				tempResult += "_:" + outputObj;
+			} else if(((String) pattern.mapping.URI.getValue()).endsWith("/")) {
+				tempResult += "<" + pattern.mapping.URI + outputObj + "> ";
+			} else {
+				tempResult += "<" + pattern.mapping.URI + "/" + outputObj + "> ";
+			}
 		} else if(!pattern.isLiteral) {
-			tempResult += "<" + defaultNameSpace + "/" + outputObj + "> ";
+			if(defaultNameSpace.endsWith("/")) {
+				tempResult += "<" + defaultNameSpace + outputObj + ">";
+			} else {
+				tempResult += "<" + defaultNameSpace + "/" + outputObj + ">";
+			}
 		} else {
 			tempResult += "\"" + outputObj + "\" ";
 		}
@@ -230,8 +252,8 @@ public class TemplateRDF {
 					continue;
 				if(tempComp.data.objectList.size() > 0 ) {
 					for(MutableObject objectName : tempComp.data.objectList) {
-						if(objectName.getValue() == null || ((String) objectName.getValue()).isEmpty())
-							continue;
+						//if(objectName.getValue() == null)
+						//	continue;
 						subject = ((String) subjectName.getValue());						
 						predicate = (String) tempComp.data.predicateName.getValue();
 						object = (String) objectName.getValue();
@@ -239,9 +261,9 @@ public class TemplateRDF {
 						tempResult += setOneOfNTriples(tempComp.metaData.subjectPattern, subject);
 						tempResult += setOneOfNTriples(tempComp.metaData.predicatePattern, predicate);
 						tempResult += setOneOfNTriples(tempComp.metaData.objectPattern, object);
-						tempResult += ".";
+						tempResult += " .";
 						
-						result.add(tempResult + System.lineSeparator());			
+						result.add(tempResult);			
 					}
 				}
 			}

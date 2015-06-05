@@ -92,7 +92,7 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
 	public void exportCurrentResult(List<String> result) {
 		Iterator<String> it = result.iterator();
 		while(it.hasNext()) {
-			output.print(it.next());			
+			output.println(it.next());			
 		}
 	}	
 	
@@ -125,7 +125,11 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
 	
 	public void endDocument() throws SAXException {	
 		try {
-			
+			/*
+			if(this.mainTemplateRDF != null) {
+				this.mainTemplateRDF.clearData();
+			}
+			*/
 		} catch (Exception e) {
 			System.out.println("ERROR:" + e.getMessage());
 		}
@@ -315,13 +319,13 @@ public class CustomizedSAXYFilterHandler extends DefaultHandler {
     public void characters(char ch[], int start, int length) throws SAXException {
     	String value = StringEscapeUtils.escapeXml(new String(ch, start, length).trim());
     	try {
-    		if(value.length()>0) {
+    		// if(value.length()>0) {
     			// outputStream += "<rdf:value>" + value + "</rdf:value>" + System.lineSeparator();
     			ListIterator<MutableObject> listIterator = this.delayAddingDataList.listIterator();
     			while(listIterator.hasNext()) {
     				listIterator.next().setValue(value);
     			}    			    			
-    		}
+    		// } 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

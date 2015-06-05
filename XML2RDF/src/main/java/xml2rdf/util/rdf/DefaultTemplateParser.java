@@ -23,7 +23,7 @@ public class DefaultTemplateParser extends AbstractTemplateParser {
 		String line3 = "abc, /abc/, string,null,title,null,abc,/abc/def,string";
 		if(parser.ParseByLine(line3)) {
 			System.out.println(parser.constructionPatternList.toString());
-		}
+		}		
 	}
 	
 
@@ -44,6 +44,9 @@ public class DefaultTemplateParser extends AbstractTemplateParser {
 
 	@Override
 	public boolean IsAcceptedSubjectPattern(String ns, String ds, String ts) {
+		if(IsBlankNode(ns) && IsAcceptedDataType(ts)) {
+			return true;
+		}
 		if((IsAcceptedNameSpacePrefix(ns) || IsNull(ns)) && IsAcceptedDataType(ts)) {
 			return true;
 		}
@@ -61,10 +64,20 @@ public class DefaultTemplateParser extends AbstractTemplateParser {
 
 	
 	public boolean IsAcceptedObjectPattern(String ns, String ds, String ts) {
+		if(IsBlankNode(ns) && IsAcceptedDataType(ts)) {
+			return true;
+		}
 		if((IsAcceptedNameSpacePrefix(ns) || IsNull(ns)) && IsAcceptedDataType(ts)) {
 			return true;
 		}
 		return false;
+	}
+
+
+	@Override
+	public boolean IsComment(String str) {
+		String regex = "^(\\s*#).*$";
+		return str.matches(regex);		
 	}
 
 }
