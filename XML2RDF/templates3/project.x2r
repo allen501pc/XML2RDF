@@ -1,0 +1,37 @@
+defaultnamespace = http://example.com
+namespace oa = http://lod.openaire.eu/data
+namespace swpo = http://lod.openaire.eu/data
+namespace cerif = http://lod.openaire.eu/data
+namespace dcterms = http://dublincore.org/documents/dcmi-terms
+namespace foaf = http://xmlns.com/foaf/0.1
+namespace bibo = http://purl.org/ontology/bibo
+namespace bibtex = http://purl.org/net/nknouf/ns/bibtex
+
+# =============== start project ===============
+# project
+oa,/record/result/header/dri:objIdentifier/text() a oa,project
+# websiteurl
+oa,/record/result/header/dri:objIdentifier/text() oa,websiteurl oa,/record/result/metadata/oaf:entity/oaf:project/websiteurl/text(),string
+# code
+oa,/record/result/header/dri:objIdentifier/text() oa,code oa,/record/result/metadata/oaf:entity/oaf:project/code/text(),string
+# acronym
+oa,/record/result/header/dri:objIdentifier/text() oa,acronym oa,/record/result/metadata/oaf:entity/oaf:project/acronym/text(),string
+# title
+oa,/record/result/header/dri:objIdentifier/text() oa,title oa,/record/result/metadata/oaf:entity/oaf:project/title/text(),string
+# startdate
+oa,/record/result/header/dri:objIdentifier/text() oa,startdate oa,/record/result/metadata/oaf:entity/oaf:project/startdate/text(),string
+# enddate
+oa,/record/result/header/dri:objIdentifier/text() oa,enddate oa,/record/result/metadata/oaf:entity/oaf:project/enddate/text(),string
+# callidentifier
+oa,/record/result/header/dri:objIdentifier/text() oa,callidentifier oa,/record/result/metadata/oaf:entity/oaf:project/callidentifier/text(),string
+# keywords
+oa,/record/result/header/dri:objIdentifier/text() oa,keywords oa,/record/result/metadata/oaf:entity/oaf:project/keywords/text(),string
+# duration
+oa,/record/result/header/dri:objIdentifier/text() oa,duration oa,/record/result/metadata/oaf:entity/oaf:project/duration/text(),string
+# ecsc39
+oa,/record/result/header/dri:objIdentifier/text() oa,ecsc39 oa,/record/result/metadata/oaf:entity/oaf:project/ecsc39/text(),string
+# foundingtree
+oa,/record/result/header/dri:objIdentifier/text() oa,fundingtree oa,/record/result/metadata/oaf:entity/oaf:project/fundingtree/text(),string
+# contracttype
+oa,/record/result/header/dri:objIdentifier/text() oa,contracttype oa,/record/result/metadata/oaf:entity/oaf:project/contracttype/text(),string
+# ================================ End of mapping =====================

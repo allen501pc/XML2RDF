@@ -1,0 +1,62 @@
+defaultnamespace = http://example.com
+namespace oa = http://lod.openaire.eu/data
+namespace swpo = http://lod.openaire.eu/data
+namespace cerif = http://lod.openaire.eu/data
+namespace dcterms = http://dublincore.org/documents/dcmi-terms
+namespace foaf = http://xmlns.com/foaf/0.1
+namespace bibo = http://purl.org/ontology/bibo
+namespace bibtex = http://purl.org/net/nknouf/ns/bibtex
+# =============== Start for result ===================
+# Result type
+oa,/record/result/header/dri:objIdentifier/text() a oa,result
+# Class Type
+oa,/record/result/header/dri:objIdentifier/text() oa,resulttype oa,/record/result/metadata/oaf:entity/oaf:result/resulttype/@classid,string
+# Language
+oa,/record/result/header/dri:objIdentifier/text() oa,language oa,/record/result/metadata/oaf:entity/oaf:result/language/@classname,string
+# 06/02 Language scheme
+# oa,/record/result/header/dri:objIdentifier/text() oa,languageScheme oa,/record/result/metadata/oaf:entity/oaf:result/language/@schemename,string
+# Subject
+oa,/record/result/header/dri:objIdentifier/text() oa,subject oa,/record/result/metadata/oaf:entity/oaf:result/subject/@classname,string
+# Title
+oa,/record/result/header/dri:objIdentifier/text() dcterms,title oa,/record/result/metadata/oaf:entity/oaf:result/title/text(),string
+# Relevant date
+oa,/record/result/header/dri:objIdentifier/text() oa,relevantdate oa,/record/result/metadata/oaf:entity/oaf:result/relevantdate/text(),string
+# Description
+oa,/record/result/header/dri:objIdentifier/text() oa,description oa,/record/result/metadata/oaf:entity/oaf:result/description/text(),string
+# Date of acceptance
+oa,/record/result/header/dri:objIdentifier/text() oa,dateofacceptance oa,/record/result/metadata/oaf:entity/oaf:result/dateofacceptance/text(),string
+# Publisher
+oa,/record/result/header/dri:objIdentifier/text() oa,publisher oa,/record/result/metadata/oaf:entity/oaf:result/publisher/text(),string
+# Embargo end date
+oa,/record/result/header/dri:objIdentifier/text() oa,embargoenddate oa,/record/result/metadata/oaf:entity/oaf:result/embargoenddate/text(),string
+# Storagedate
+oa,/record/result/header/dri:objIdentifier/text() oa,storagedate oa,/record/result/metadata/oaf:entity/oaf:result/storagedate/text(),string
+# Source 
+oa,/record/result/header/dri:objIdentifier/text() oa,source oa,/record/result/metadata/oaf:entity/oaf:result/source/text(),string
+# fulltext
+oa,/record/result/header/dri:objIdentifier/text() oa,fulltext oa,/record/result/metadata/oaf:entity/oaf:result/fulltext/text(),string
+# format
+oa,/record/result/header/dri:objIdentifier/text() oa,format oa,/record/result/metadata/oaf:entity/oaf:result/format/text(),string
+# context
+oa,/record/result/header/dri:objIdentifier/text() oa,context oa,/record/result/metadata/oaf:entity/oaf:result/context/@label,string
+# Journal
+oa,/record/result/header/dri:objIdentifier/text() oa,journal oa,/record/result/metadata/oaf:entity/oaf:result/journal/text(),string
+# Issn Online (Eletronic Issn)
+oa,/record/result/header/dri:objIdentifier/text() oa,issn_online oa,/record/result/metadata/oaf:entity/oaf:result/journal/@eissn,string
+# issn Linking
+oa,/record/result/header/dri:objIdentifier/text() oa,issn_linking oa,/record/result/metadata/oaf:entity/oaf:result/journal/@lissn,string
+# issn printed
+oa,/record/result/header/dri:objIdentifier/text() oa,issn_printed oa,/record/result/metadata/oaf:entity/oaf:result/journal/@issn,string
+# resource type
+oa,/record/result/header/dri:objIdentifier/text() oa,resourcetype oa,/record/result/metadata/oaf:entity/oaf:result/resourcetype/@classid,string
+# device
+oa,/record/result/header/dri:objIdentifier/text() oa,device oa,/record/result/metadata/oaf:entity/oaf:result/device/text(),string
+# size
+oa,/record/result/header/dri:objIdentifier/text() oa,size oa,/record/result/metadata/oaf:entity/oaf:result/size/text(),string
+# version
+oa,/record/result/header/dri:objIdentifier/text() oa,version oa,/record/result/metadata/oaf:entity/oaf:result/version/text(),string
+# lastmetadataupdate
+oa,/record/result/header/dri:objIdentifier/text() oa,lastmetadataupdate oa,/record/result/metadata/oaf:entity/oaf:result/lastmetadataupdate/text(),string
+# metadataversionnumber
+oa,/record/result/header/dri:objIdentifier/text() oa,metadataversionnumber oa,/record/result/metadata/oaf:entity/oaf:result/metadataversionnumber/text(),string
+# ============ End of Mapping =========

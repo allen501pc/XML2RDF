@@ -1,0 +1,79 @@
+defaultnamespace = http://example.com
+namespace oa = http://lod.openaire.eu/data
+namespace swpo = http://lod.openaire.eu/data
+namespace cerif = http://lod.openaire.eu/data
+namespace dcterms = http://dublincore.org/documents/dcmi-terms
+namespace foaf = http://xmlns.com/foaf/0.1
+namespace bibo = http://purl.org/ontology/bibo
+namespace bibtex = http://purl.org/net/nknouf/ns/bibtex
+
+# =========== Start data source ============
+# datasource
+oa,/record/result/header/dri:objIdentifier/text() a oa,datasource
+# datasourcetype
+oa,/record/result/header/dri:objIdentifier/text() oa,datasourcetype oa,/record/result/metadata/oaf:entity/oaf:datasource/datasourcetype/@classid,string
+# openairecompatibility
+oa,/record/result/header/dri:objIdentifier/text() oa,openairecompatibility oa,/record/result/metadata/oaf:entity/oaf:datasource/openairecompatibility/@classid,string
+# officialname
+oa,/record/result/header/dri:objIdentifier/text() oa,officialname oa,/record/result/metadata/oaf:entity/oaf:datasource/officialname/text(),string
+# englishname
+oa,/record/result/header/dri:objIdentifier/text() oa,englishname oa,/record/result/metadata/oaf:entity/oaf:datasource/englishname/text(),string
+# websiteurl
+oa,/record/result/header/dri:objIdentifier/text() oa,websiteurl oa,/record/result/metadata/oaf:entity/oaf:datasource/websiteurl/text(),string
+# logourl
+oa,/record/result/header/dri:objIdentifier/text() oa,logourl oa,/record/result/metadata/oaf:entity/oaf:datasource/logourl/text(),string
+# Contact Email
+oa,/record/result/header/dri:objIdentifier/text() oa,contacEmail oa,/record/result/metadata/oaf:entity/oaf:datasource/contactemail/text(),string
+# namespaceprefix
+oa,/record/result/header/dri:objIdentifier/text() oa,namespaceprefix oa,/record/result/metadata/oaf:entity/oaf:datasource/namespaceprefix/text(),string
+# latitude
+oa,/record/result/header/dri:objIdentifier/text() oa,latitude oa,/record/result/metadata/oaf:entity/oaf:datasource/latitude/text(),string
+# longitude
+oa,/record/result/header/dri:objIdentifier/text() oa,longitude oa,/record/result/metadata/oaf:entity/oaf:datasource/longitude/text(),string
+# dateofvalidation
+oa,/record/result/header/dri:objIdentifier/text() oa,dateofvalidation oa,/record/result/metadata/oaf:entity/oaf:datasource/dateofvalidation/text(),string
+# description
+oa,/record/result/header/dri:objIdentifier/text() oa,description oa,/record/result/metadata/oaf:entity/oaf:datasource/description/text(),string
+# subjects
+oa,/record/result/header/dri:objIdentifier/text() oa,subjects oa,/record/result/metadata/oaf:entity/oaf:datasource/subjects/@classid,string
+# odnumberofitems
+oa,/record/result/header/dri:objIdentifier/text() oa,odnumberofitems oa,/record/result/metadata/oaf:entity/oaf:datasource/odnumberofitems/text(),string
+# odnumberofitemsdate
+oa,/record/result/header/dri:objIdentifier/text() oa,odnumberofitemsdate oa,/record/result/metadata/oaf:entity/oaf:datasource/odnumberofitemsdate/text(),string
+# odpolicies
+oa,/record/result/header/dri:objIdentifier/text() oa,odpolicies oa,/record/result/metadata/oaf:entity/oaf:datasource/odpolicies/text(),string
+# odlanguages
+oa,/record/result/header/dri:objIdentifier/text() oa,odlanguages oa,/record/result/metadata/oaf:entity/oaf:datasource/odlanguages/text(),string
+# odcontenttypes
+oa,/record/result/header/dri:objIdentifier/text() oa,odcontenttypes oa,/record/result/metadata/oaf:entity/oaf:datasource/odcontenttypes/text(),string
+# accessinfopackage
+oa,/record/result/header/dri:objIdentifier/text() oa,accessinfopackage oa,/record/result/metadata/oaf:entity/oaf:datasource/accessinfopackage/text(),string
+# releasestartdate
+oa,/record/result/header/dri:objIdentifier/text() oa,releasestartdate oa,/record/result/metadata/oaf:entity/oaf:datasource/releasestartdate/text(),string
+# releaseenddate
+oa,/record/result/header/dri:objIdentifier/text() oa,releaseenddate oa,/record/result/metadata/oaf:entity/oaf:datasource/releaseenddate/text(),string
+# missionstatementurl
+oa,/record/result/header/dri:objIdentifier/text() oa,missionstatementurl oa,/record/result/metadata/oaf:entity/oaf:datasource/missionstatementurl/text(),string
+# databaseaccesstype
+oa,/record/result/header/dri:objIdentifier/text() oa,databaseaccesstype oa,/record/result/metadata/oaf:entity/oaf:datasource/databaseaccesstype/text(),string
+# datauploadtype
+oa,/record/result/header/dri:objIdentifier/text() oa,datauploadtype oa,/record/result/metadata/oaf:entity/oaf:datasource/datauploadtype/text(),string
+# databaseaccessrestriction
+oa,/record/result/header/dri:objIdentifier/text() oa,databaseaccessrestriction oa,/record/result/metadata/oaf:entity/oaf:datasource/databaseaccessrestriction/text(),string
+# datauploadrestriction
+oa,/record/result/header/dri:objIdentifier/text() oa,datauploadrestriction oa,/record/result/metadata/oaf:entity/oaf:datasource/datauploadrestriction/text(),string
+# citationguidelineurl
+oa,/record/result/header/dri:objIdentifier/text() oa,citationguidelineurl oa,/record/result/metadata/oaf:entity/oaf:datasource/citationguidelineurl/text(),string
+# qualitymanagementkind
+oa,/record/result/header/dri:objIdentifier/text() oa,qualitymanagementkind oa,/record/result/metadata/oaf:entity/oaf:datasource/qualitymanagementkind/text(),string
+# pidsystems
+oa,/record/result/header/dri:objIdentifier/text() oa,pidsystems oa,/record/result/metadata/oaf:entity/oaf:datasource/pidsystems/text(),string
+# certificates
+oa,/record/result/header/dri:objIdentifier/text() oa,certificates oa,/record/result/metadata/oaf:entity/oaf:datasource/certificates/text(),string
+# policies
+oa,/record/result/header/dri:objIdentifier/text() oa,policies oa,/record/result/metadata/oaf:entity/oaf:datasource/policies/@name,string
+# dataprovider
+oa,/record/result/header/dri:objIdentifier/text() oa,dataprovider oa,/record/result/metadata/oaf:entity/oaf:datasource/dataprovider/text(),string
+# serviceprovider
+oa,/record/result/header/dri:objIdentifier/text() oa,serviceprovider oa,/record/result/metadata/oaf:entity/oaf:datasource/serviceprovider/text(),string
+# =============== end of datasource ==========
