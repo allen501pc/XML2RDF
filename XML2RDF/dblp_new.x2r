@@ -1,0 +1,78 @@
+defaultnamespace = http://example.com#
+namespace ex = http://example.com#
+
+# =============== For master thesis =====================
+ex,/dblp/mastersthesis/@key  a  ex, mastersthesis 
+# has author
+ex,/dblp/mastersthesis/@key  hasAuthor  ex, /dblp/mastersthesis/author/text() 
+# has title
+ex,/dblp/mastersthesis/@key  hasTitle  ex, /dblp/mastersthesis/title/text() 
+# year
+ex,/dblp/mastersthesis/@key  year  ex, /dblp/mastersthesis/year/text() 
+# school
+ex,/dblp/mastersthesis/@key  school  ex, /dblp/mastersthesis/school/text() 
+
+# =========== end of master thesis =======================
+# =========== For article ================================
+ex,/dblp/article/@key  a  ex, journal 
+# has editor
+ex,/dblp/article/@key  hasEditor  ex, /dblp/article/editor/text(), string
+# has title
+ex,/dblp/article/@key  hasTitle  ex, /dblp/article/title/text(), string
+# has journal
+ex,/dblp/article/@key  journalName  ex, /dblp/article/journal/text(), string
+# year
+ex,/dblp/article/@key  year  ex, /dblp/article/year/text(), string
+# volume
+ex,/dblp/article/@key  volume  ex, /dblp/article/volume/text(), string
+# month 
+ex,/dblp/article/@key  month  ex, /dblp/article/month/text(), string
+# url
+ex,/dblp/article/@key  url  ex, /dblp/article/url/text(), string
+# =============== End of Article ======================
+# ================= in proceedings =============
+ex,/dblp/inproceedings/@key  a  ex, inproceeding 
+# has author
+ex,/dblp/inproceedings/@key  hasAuthor  ex, /dblp/inproceedings/author/text(), string
+# has title
+ex,/dblp/inproceedings/@key  hasTitle  ex, /dblp/inproceedings/title/text(), string
+# has pages
+ex,/dblp/inproceedings/@key  pages  ex, /dblp/inproceedings/pages/text(), string
+# year
+ex,/dblp/inproceedings/@key  year  ex, /dblp/inproceedings/year/text(), string
+# Book title
+ex,/dblp/inproceedings/@key  bookTitle  ex, /dblp/inproceedings/booktitle/text(), string
+# url
+ex,/dblp/inproceedings/@key  url  ex, /dblp/inproceedings/url/text(), string
+# ================== end of in proceedings ================
+# ================== proceedings ============
+ex,/dblp/proceedings/@key  a  ex, proceeding 
+# editor
+ex,/dblp/proceedings/@key  hasEditor  ex, /dblp/proceedings/editor/text(), string
+# has title
+ex,/dblp/proceedings/@key  hasTitle  ex, /dblp/proceedings/title/text(), string
+# series
+ex,/dblp/proceedings/@key  series  ex, /dblp/proceedings/series/text(), string
+# Book title
+ex,/dblp/proceedings/@key  bookTitle  ex, /dblp/proceedings/booktitle/text(), string
+# series
+ex,/dblp/proceedings/@key  series  ex, /dblp/proceedings/series/text(), string
+# year
+ex,/dblp/proceedings/@key  year  ex, /dblp/proceedings/year/text(), string
+# isbn
+ex,/dblp/proceedings/@key  isbn  ex, /dblp/proceedings/isbn/text(), string
+# url
+ex,/dblp/proceedings/@key  url  ex, /dblp/proceedings/url/text(), string
+# =============== end of proceedings ==================
+# =============== For phd thesis =====================
+ex,/dblp/phdthesis/@key  a  ex, phdthesis 
+# has author
+ex,/dblp/phdthesis/@key  hasAuthor  ex, /dblp/phdthesis/author/text(), string
+# has title
+ex,/dblp/phdthesis/@key  hasTitle  ex, /dblp/phdthesis/title/text(), string
+# year
+ex,/dblp/phdthesis/@key  year  ex, /dblp/phdthesis/year/text(), string
+# school
+ex,/dblp/phdthesis/@key  school  ex, /dblp/phdthesis/school/text(), string
+
+# =========== end of PhD thesis =======================
