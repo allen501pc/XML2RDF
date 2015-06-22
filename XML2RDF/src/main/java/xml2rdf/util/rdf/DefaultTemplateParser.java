@@ -20,7 +20,7 @@ public class DefaultTemplateParser extends AbstractTemplateParser {
 			System.out.println(parser.GetNameSpaceObjectByPrefix("abc").getURI());
 		}
 		
-		String line3 = "abc, /abc/, string,null,title,null,abc,/abc/def,string";
+		String line3 = "abc,/abc/,string title abc,/abc/def,string";
 		if(parser.ParseByLine(line3)) {
 			System.out.println(parser.constructionPatternList.toString());
 		}		
@@ -28,16 +28,21 @@ public class DefaultTemplateParser extends AbstractTemplateParser {
 	
 
 	@Override
-	public boolean IsAcceptedDataType(String str) {
-		if(IsNull(str) || str.toLowerCase().equals("string"))
+	public boolean IsAcceptedDataType(String str) {		
+		if(IsNull(str))
 			return true;
+		str = str.toLowerCase();
+		if(str.equals("string")) {
+			return true;
+		}
 		return false;
 	}
 	@Override
 	public Object GetDataType(String str) {
 		if(IsNull(str))
 			return null;
-		if(str.toLowerCase().equals("string"))
+		str = str.toLowerCase();
+		if(str.equals("string"))
 			return (Object) XSDDatatype.XSDstring;
 		return null;
 	}

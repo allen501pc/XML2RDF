@@ -136,9 +136,9 @@ public abstract class AbstractTemplateParser implements ITemplateValidator, ITem
 	
 	@Override
 	public boolean IsConstructingPattern(String str) {
-		String[] triples = str.split(",");
+		String[] triples = str.split(" ");
 		String nsPart = "", descriptionPart = "", typePart = "";
-		if(triples == null || (triples != null && triples.length != 9)) {
+		if(triples == null || (triples != null && triples.length != 3)) {
 			return false;
 		}
 		
@@ -148,120 +148,363 @@ public abstract class AbstractTemplateParser implements ITemplateValidator, ITem
 			if(triples[i] == null)
 				return false;
 			String item = triples[i].trim();
+
 			if(item.isEmpty())
 				return false;
-			switch(i%3) {
-				case 0 :
-					nsPart = item;
-					
-					break;
-				
-				case 1 :
-					descriptionPart = item;
-					// if( !IsAcceptedNameSpacePrefix(triples[i]) && !IsURI(triples[i]) && !IsNull(triples[i]) )
-					// 	return false;
-					break;
-					
-				case 2 : 
-					typePart = item;
-					switch (i) {
-						case 2:
+			
+			switch(i+1) {
+				case 1: // For subject
+					String[] components = item.split(",");
+					if(components.length == 1) { // Only description
+						nsPart = "";
+						descriptionPart = components[0].trim();
+						typePart = "";
+						if (!IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {
+							return false;
+						}						
+					} else if (components.length == 2) { // Check ns,des or des,type
+						boolean finalResult = true;
+						// Check ns,des 
+						nsPart = components[0].trim();
+						descriptionPart = components[1].trim();
+						typePart = "";
+						if (!IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {							
+							finalResult = false;
+						}
+						
+						if (finalResult == false) {	
+							// Check des,type
+							nsPart = "";
+							descriptionPart = components[0].trim();
+							typePart = components[1].trim();
 							if (!IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {
-								return false;
+								finalResult = false;
 							}
-							break;
-						case 5: 
-							if ( !IsAcceptedPredicatePattern(nsPart, descriptionPart, typePart)) {
-								return false;
-							}
-							break;
-						case 8:
-							if ( !IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {
-								return false;
-							}
-							break;
-						default:
-							break;
+						}
+						if(finalResult == false) {
+							return false;
+						}
+					} else if (components.length == 3) {
+						nsPart = components[0].trim();
+						descriptionPart = components[1].trim();
+						typePart = components[2].trim();
+						if (!IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {
+							return false;
+						}						
 					}
-					break;	
-					
-				default:
 					break;
-			}
+				case 2: // For predicate
+					boolean finalResult = true;
+					String[] components2 = item.split(",");
+					if(components2.length == 1) { // Only description
+						nsPart = "";
+						descriptionPart = components2[0].trim();
+						typePart = "";
+						if (!IsAcceptedPredicatePattern(nsPart, descriptionPart, typePart)) {
+							finalResult =  false;
+						}						
+					} else if (components2.length == 2) {						
+						// Check ns,des 
+						nsPart = components2[0].trim();
+						descriptionPart = components2[1].trim();
+						typePart = "";
+						if (!IsAcceptedPredicatePattern(nsPart, descriptionPart, typePart)) {							
+							finalResult =  false;
+						}																	
+					}
+					if(finalResult == false) {
+						return false;
+					}
+					break;
+				case 3: // For object.
+					String[] components3 = item.split(",");
+					if(components3.length == 1) { // Only description
+						nsPart = "";
+						descriptionPart = components3[0].trim();
+						typePart = "";
+						if (!IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {
+							return false;
+						}						
+					} else if (components3.length == 2) { // Check ns,des or des,type
+						boolean finalResult3 = true;
+						// Check ns,des 
+						nsPart = components3[0].trim();
+						descriptionPart = components3[1].trim();
+						typePart = "";
+						if (!IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {							
+							finalResult3 = false;
+						}
+						
+						if (finalResult3 == false) {	
+							// Check des,type
+							nsPart = "";
+							descriptionPart = components3[0].trim();
+							typePart = components3[1].trim();
+							if (!IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {
+								finalResult3 = false;
+							}
+						}
+						if(finalResult3 == false) {
+							return false;
+						}						
+					} else if (components3.length == 3) {
+						nsPart = components3[0].trim();
+						descriptionPart = components3[1].trim();
+						typePart = components3[2].trim();
+						if (!IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {
+							return false;
+						}						
+					}
+					break;
+			}									
+			
+//			switch(i%3) {
+//				case 0 :
+//					nsPart = item;
+//					
+//					break;
+//				
+//				case 1 :
+//					descriptionPart = item;
+//					// if( !IsAcceptedNameSpacePrefix(triples[i]) && !IsURI(triples[i]) && !IsNull(triples[i]) )
+//					// 	return false;
+//					break;
+//					
+//				case 2 : 
+//					typePart = item;
+//					switch (i) {
+//						case 2:
+//							if (!IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {
+//								return false;
+//							}
+//							break;
+//						case 5: 
+//							if ( !IsAcceptedPredicatePattern(nsPart, descriptionPart, typePart)) {
+//								return false;
+//							}
+//							break;
+//						case 8:
+//							if ( !IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {
+//								return false;
+//							}
+//							break;
+//						default:
+//							break;
+//					}
+//					break;	
+//					
+//				default:
+//					break;
+//			}
 		}		
 		return true;
 	}
 	
 	public ArrayList<Object> GetConstructingPattern(String str) {
-		String[] triples = str.split(",");
+		String[] triples = str.split(" ");
 		ArrayList<Object> list = new ArrayList<Object>();
 		String nsPart = "", descriptionPart = "", typePart = "";
-		if(triples == null || (triples != null && triples.length != 9)) {
+		if(triples == null || (triples != null && triples.length != 3)) {
 			return list;
 		}
-		
-		
 		for(int i = 0; i < triples.length; ++i) {
+			
 			if(triples[i] == null)
 				return list;
 			String item = triples[i].trim();
+
 			if(item.isEmpty())
-				return list;			
-			switch(i%3) {
-				case 0 :
-					nsPart = item;					
-					break;
-				
-				case 1 :
-					descriptionPart = item;					
-					break;
-					
-				case 2 : 
-					typePart = item;					
-					
-					switch (i) {
-						case 2:
-							if ( !IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {
-								list.clear();
-								return list;
+				return list;
+			
+			switch(i+1) {
+				case 1: // For subject
+					String[] components = item.split(",");
+					if(components.length == 1) { // Only description
+						nsPart = "";
+						descriptionPart = components[0].trim();
+						typePart = "";
+						
+						if ( !IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {
+							list.clear();
+							return list;
+						}
+						list.add(GetNameSpaceObjectByPrefix(nsPart));
+						list.add(descriptionPart);
+						list.add(GetDataType(typePart));
+					} else if (components.length == 2) { // Check ns,des or des,type
+						boolean finalResult = true;
+						// Check ns,des 
+						nsPart = components[0].trim();
+						descriptionPart = components[1].trim();
+						typePart = "";
+						if (!IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {							
+							finalResult = false;
+						}
+						if (finalResult == false) {	
+							// Check des,type
+							nsPart = "";
+							descriptionPart = components[0].trim();
+							typePart = components[1].trim();
+							if (!IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {
+								finalResult = false;
 							}
-							list.add(GetNameSpaceObjectByPrefix(nsPart));
-							list.add(descriptionPart);
-							list.add(GetDataType(typePart));
-							break;
-						case 5: 
-							if ( !IsAcceptedPredicatePattern(nsPart, descriptionPart, typePart)) {
-								list.clear();
-								return list;
-							}
-							list.add(GetNameSpaceObjectByPrefix(nsPart));
-							list.add(descriptionPart);
-							list.add(GetDataType(typePart));
-							break;
-						case 8:
-							if ( !IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {
-								list.clear();
-								return list;
-							}
-							list.add(GetNameSpaceObjectByPrefix(nsPart));
-							list.add(descriptionPart);
-							list.add(GetDataType(typePart));
-							break;
-						default:
-							break;
+						}
+						if(finalResult == false) {
+							list.clear();
+							return list;
+						}
+						list.add(GetNameSpaceObjectByPrefix(nsPart));
+						list.add(descriptionPart);
+						list.add(GetDataType(typePart));
+					} else if (components.length == 3) {
+						nsPart = components[0].trim();
+						descriptionPart = components[1].trim();
+						typePart = components[2].trim();
+						if (!IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {
+							list.clear();
+							return list;
+						}
+						list.add(GetNameSpaceObjectByPrefix(nsPart));
+						list.add(descriptionPart);
+						list.add(GetDataType(typePart));
 					}
-					break;	
-					
-				default:
 					break;
-			}
+				case 2: // For predicate
+					boolean finalResult = true;
+					String[] components2 = item.split(",");
+					if(components2.length == 1) { // Only description
+						nsPart = "";
+						descriptionPart = components2[0].trim();
+						typePart = "";
+						if (!IsAcceptedPredicatePattern(nsPart, descriptionPart, typePart)) {
+							finalResult =  false;
+						}					
+					} else if (components2.length == 2) {						
+						// Check ns,des 
+						nsPart = components2[0].trim();
+						descriptionPart = components2[1].trim();
+						typePart = "";
+						if (!IsAcceptedPredicatePattern(nsPart, descriptionPart, typePart)) {							
+							finalResult =  false;
+						}																	
+					}
+					if(finalResult == false) {
+						list.clear();
+						return list;
+					}
+					list.add(GetNameSpaceObjectByPrefix(nsPart));
+					list.add(descriptionPart);
+					list.add(GetDataType(typePart));
+					break;
+				case 3: // For object.
+					String[] components3 = item.split(",");
+					if(components3.length == 1) { // Only description
+						nsPart = "";
+						descriptionPart = components3[0].trim();
+						typePart = "";
+						if (!IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {
+							list.clear();
+							return list;
+						}						
+					} else if (components3.length == 2) { // Check ns,des or des,type
+						boolean finalResult3 = true;
+						// Check ns,des 
+						nsPart = components3[0].trim();
+						descriptionPart = components3[1].trim();
+						typePart = "";
+						if (!IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {							
+							finalResult3 = false;
+						}
+						
+						if (finalResult3 == false) {	
+							// Check des,type
+							nsPart = "";
+							descriptionPart = components3[0].trim();
+							typePart = components3[1].trim();
+							if (!IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {
+								finalResult3 = false;
+							}
+						}
+						if(finalResult3 == false) {
+							list.clear();
+							return list;
+						}						
+					} else if (components3.length == 3) {
+						nsPart = components3[0].trim();
+						descriptionPart = components3[1].trim();
+						typePart = components3[2].trim();
+						if (!IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {
+							list.clear();
+							return list;
+						}						
+					}
+					list.add(GetNameSpaceObjectByPrefix(nsPart));
+					list.add(descriptionPart);
+					list.add(GetDataType(typePart));
+					break;
+			}	
+		
+//		for(int i = 0; i < triples.length; ++i) {
+//			if(triples[i] == null)
+//				return list;
+//			String item = triples[i].trim();
+//			if(item.isEmpty())
+//				return list;			
+//			switch(i%3) {
+//				case 0 :
+//					nsPart = item;					
+//					break;
+//				
+//				case 1 :
+//					descriptionPart = item;					
+//					break;
+//					
+//				case 2 : 
+//					typePart = item;					
+//					
+//					switch (i) {
+//						case 2:
+//							if ( !IsAcceptedSubjectPattern(nsPart, descriptionPart, typePart)) {
+//								list.clear();
+//								return list;
+//							}
+//							list.add(GetNameSpaceObjectByPrefix(nsPart));
+//							list.add(descriptionPart);
+//							list.add(GetDataType(typePart));
+//							break;
+//						case 5: 
+//							if ( !IsAcceptedPredicatePattern(nsPart, descriptionPart, typePart)) {
+//								list.clear();
+//								return list;
+//							}
+//							list.add(GetNameSpaceObjectByPrefix(nsPart));
+//							list.add(descriptionPart);
+//							list.add(GetDataType(typePart));
+//							break;
+//						case 8:
+//							if ( !IsAcceptedObjectPattern(nsPart, descriptionPart, typePart)) {
+//								list.clear();
+//								return list;
+//							}
+//							list.add(GetNameSpaceObjectByPrefix(nsPart));
+//							list.add(descriptionPart);
+//							list.add(GetDataType(typePart));
+//							break;
+//						default:
+//							break;
+//					}
+//					break;	
+//					
+//				default:
+//					break;
+//			}
 		}		
 		return list;
 	}
 	
 	@Override
 	public boolean IsNull(String str) {
-		return str.toLowerCase().equals("null");
+		return str.isEmpty();
 	}
 	
 }
