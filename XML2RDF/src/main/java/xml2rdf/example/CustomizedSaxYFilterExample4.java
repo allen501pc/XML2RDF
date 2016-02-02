@@ -9,11 +9,21 @@ import java.io.PrintWriter;
 import java.io.StringReader;
 
 
+
+import java.net.URI;
+import java.net.URLEncoder;
+
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import DataCrawler.OpenAIRE.SequenceFileReader;
+import DataCrawler.OpenAIRE.ProcessSequenceFile;
 
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.SequenceFile;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.util.ReflectionUtils;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -98,14 +108,22 @@ public class CustomizedSaxYFilterExample4 {
 		    		// Do NOT use it because current files have been repaired. 
 		    	    // fixIncompleteTag(filename);
 				    File[] listOfFiles = sourceFolder.listFiles(); 
+				    String directoryPath = "file:///";
+					directoryPath = URLEncoder.encode(directoryPath, "UTF-8");
+					
+					Configuration conf = new Configuration();
+					FileSystem fs = FileSystem.get(new URI(directoryPath),conf);
 				    for ( int idx = 0; idx < listOfFiles.length; ++idx) {
-				    	String filename = sourceFolderName + "/" + listOfFiles[idx].getName();			    		
-			    		SequenceFileReader reader = new SequenceFileReader();
-			    		reader.readSequenceFile(filename);			    							   
-					    						
-						while(reader.hasNext()) {
+				    	String filename = sourceFolderName + "/" + listOfFiles[idx].getName();
+				    	Path file = new Path(fs.getUri().toString() +  filename);
+				    	@SuppressWarnings("deprecation")
+				    	SequenceFile.Reader reader = new SequenceFile.Reader(fs, file, conf);
+			    		// reader.readSequenceFile(filename);			    							   
+				    	Text key = (Text) ReflectionUtils.newInstance(reader.getKeyClass(), conf);
+						Text value = (Text) ReflectionUtils.newInstance(reader.getValueClass(), conf);
+						while(reader.next(key,value)) {
 							long startTime = System.currentTimeMillis();
-							String xmlContent = reader.getValue().toString().replace("&nbsp;", " ");
+							String xmlContent = value.toString().replace("&nbsp;", " ");
 							
 							if(xmlContent.contains("<oaf:result>")) {								
 						    
@@ -127,7 +145,7 @@ public class CustomizedSaxYFilterExample4 {
 							
 						    saxParser.parse(new InputSource(new StringReader(xmlContent)), handler);
 						    long stopTime = System.currentTimeMillis();
-						    logWriter.write(reader.getKey() + " > OK" + System.lineSeparator());
+						    logWriter.write(key.toString() + " > OK" + System.lineSeparator());
 						    logWriter.flush();
 							long elapsedTime = stopTime - startTime;
 							sumOfMappingTime += (elapsedTime/1000.0f);

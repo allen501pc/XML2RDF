@@ -12,7 +12,7 @@ import java.io.StringReader;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import DataCrawler.OpenAIRE.SequenceFileReader;
+import DataCrawler.OpenAIRE.ProcessSequenceFile;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
